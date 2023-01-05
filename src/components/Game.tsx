@@ -12,7 +12,6 @@ export const Game = () => {
   }, [secretNumber, bet]);
 
   const setSecretNumberCallback = (secret: number) => setSecretNumber(secret);
-
   const setBetCallback = (bet: number) => setBet(bet);
 
   return secretNumber ? (

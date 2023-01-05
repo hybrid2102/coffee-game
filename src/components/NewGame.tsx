@@ -4,6 +4,7 @@ export const NewGame = (props: { callback: (secret: number) => void }) => {
   const handleSubmit = (e: any) => {
     e.preventDefault();
     let secret = e.target.querySelector("#secretNumber").value;
+    // todo: prendere il valore tramite useRef
     callback(secret);
   };
 
