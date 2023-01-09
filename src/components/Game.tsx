@@ -4,19 +4,32 @@ import { EndGame } from "./EndGame/EndGame";
 import { NewGame } from "./NewGame/NewGame";
 
 export const Game = () => {
+  const [min, setMin] = useState(1);
+  const [max, setMax] = useState(1000);
   const [secretNumber, setSecretNumber] = useState(0);
   const [endGame, setEndGame] = useState(false);
+  const [bet, setBet] = useState(0);
+
+  const setBetCallback = (bet: number) => setBet(bet);
 
   useEffect(() => {
-    console.log(secretNumber);
-  }, [secretNumber]);
+    if (bet) {
+      if (bet === secretNumber) {
+        // hai perso
+        setEndGame(true);
+      } else {
+        // sei salvo, aggiorno i limiti per il prossimo turno
+        if (bet < secretNumber) {
+          setMin(bet);
+        } else {
+          setMax(bet);
+        }
+      }
+    }
+  }, [bet, secretNumber]);
 
   const setSecretNumberCallback = (secret: number) => {
     setSecretNumber(secret);
-  };
-
-  const endGameCallback = () => {
-    setEndGame(true);
   };
 
   const restartCallback = () => {
@@ -34,10 +47,12 @@ export const Game = () => {
       ) : secretNumber ? (
         <CurrentGame
           secretNumber={secretNumber}
-          endGameCallback={endGameCallback}
+          min={min}
+          max={max}
+          setBetCallback={setBetCallback}
         />
       ) : (
-        <NewGame callback={setSecretNumberCallback} />
+        <NewGame callback={setSecretNumberCallback} min={min} max={max} />
       )}
     </div>
   );

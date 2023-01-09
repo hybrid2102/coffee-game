@@ -5,30 +5,11 @@ import { SecretNumber } from "./SecretNumber";
 
 export const CurrentGame = (props: {
   secretNumber: number;
-  endGameCallback: () => void;
+  min: number;
+  max: number;
+  setBetCallback: (e: any) => void;
 }) => {
-  const { secretNumber, endGameCallback } = props;
-  const [bet, setBet] = useState(0);
-  const [min, setMin] = useState(1);
-  const [max, setMax] = useState(1000);
-
-  const setBetCallback = (bet: number) => setBet(bet);
-
-  useEffect(() => {
-    if (bet) {
-      if (bet === secretNumber) {
-        // hai perso
-        endGameCallback();
-      } else {
-        // sei salvo, aggiorno i limiti per il prossimo turno
-        if (bet < secretNumber) {
-          setMin(bet);
-        } else {
-          setMax(bet);
-        }
-      }
-    }
-  }, [bet, endGameCallback, secretNumber]);
+  const { secretNumber, min, max, setBetCallback } = props;
 
   return (
     <div className="row justify-content-center">
