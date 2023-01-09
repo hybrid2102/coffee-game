@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { Bet } from "./Bet";
 import { Hint } from "./Hint";
 import { SecretNumber } from "./SecretNumber";
