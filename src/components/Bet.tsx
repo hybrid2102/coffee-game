@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 
 export const Bet = (props: {
   secretNumber: number;
@@ -6,10 +6,15 @@ export const Bet = (props: {
 }) => {
   let { secretNumber, callback } = props;
 
+  const inputRef = useRef<HTMLInputElement>(null);
+
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    let secret = e.target.querySelector("#bet").value;
-    callback(secret);
+    //let secret = e.target.querySelector("#bet").value;
+    if (inputRef.current) {
+      let secret = +inputRef.current.value;
+      callback(secret);
+    }
   };
 
   return (
@@ -20,7 +25,7 @@ export const Bet = (props: {
       </fieldset>
 
       <label htmlFor="bet">Prova a indovinare:</label>
-      <input id="bet" type="text" />
+      <input id="bet" type="text" ref={inputRef} />
       <input type="submit" />
     </form>
   );
