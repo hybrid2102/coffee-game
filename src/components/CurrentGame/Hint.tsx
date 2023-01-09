@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 export const Hint = (props: { min: number; max: number }) => {
   const { min, max } = props;

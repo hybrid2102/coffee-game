@@ -28,7 +28,7 @@ export const CurrentGame = (props: {
         }
       }
     }
-  }, [bet]);
+  }, [bet, endGameCallback, secretNumber]);
 
   return (
     <div className="row justify-content-center">
