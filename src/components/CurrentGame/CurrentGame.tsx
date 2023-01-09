@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Bet } from "./Bet";
-import { Limits } from "./Limits";
+import { Hint } from "./Hint";
 import { SecretNumber } from "./SecretNumber";
 
 export const CurrentGame = (props: {
@@ -31,10 +31,10 @@ export const CurrentGame = (props: {
   }, [bet]);
 
   return (
-    <>
-      <SecretNumber secretNumber={secretNumber} />
-      <Limits min={min} max={max} />
+    <div className="row justify-content-center">
+      <Hint min={min} max={max} />
       <Bet callback={setBetCallback} />
-    </>
+      <SecretNumber secretNumber={secretNumber} />
+    </div>
   );
 };

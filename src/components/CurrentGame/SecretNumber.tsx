@@ -1,11 +1,14 @@
 import React from "react";
+import Button from "react-bootstrap/Button";
 
 export const SecretNumber = (props: { secretNumber: number }) => {
   const { secretNumber } = props;
+  const mostraNumero = () => alert(secretNumber);
   return (
-    <fieldset>
-      <legend>Numero segreto</legend>
-      <input id="secretNumber" readOnly value={secretNumber} type="text" />
-    </fieldset>
+    <div>
+      <Button onClick={mostraNumero} className="btn-warning">
+        Mostra il numero segreto
+      </Button>
+    </div>
   );
 };

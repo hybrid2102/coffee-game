@@ -1,4 +1,5 @@
 import React, { useRef } from "react";
+import { Button } from "react-bootstrap";
 
 export const Bet = (props: { callback: (e: any) => void }) => {
   const { callback } = props;
@@ -15,10 +16,18 @@ export const Bet = (props: { callback: (e: any) => void }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="bet">Prova a indovinare:</label>
-      <input id="bet" type="text" ref={inputRef} />
-      <input type="submit" />
+    <form onSubmit={handleSubmit} className="row justify-content-center mb-5">
+      <div className="col-auto">
+        <input
+          type="text"
+          className="form-control"
+          placeholder="Prova a NON indovinare..."
+          ref={inputRef}
+        />
+      </div>
+      <div className="col-auto">
+        <Button type="submit">Prova</Button>
+      </div>
     </form>
   );
 };

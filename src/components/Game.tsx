@@ -24,14 +24,18 @@ export const Game = () => {
     setSecretNumber(0);
   };
 
-  return endGame ? (
-    <EndGame restartCallback={restartCallback} />
-  ) : secretNumber ? (
-    <CurrentGame
-      secretNumber={secretNumber}
-      endGameCallback={endGameCallback}
-    />
-  ) : (
-    <NewGame callback={setSecretNumberCallback} />
+  return (
+    <div className="container text-center">
+      {endGame ? (
+        <EndGame restartCallback={restartCallback} />
+      ) : secretNumber ? (
+        <CurrentGame
+          secretNumber={secretNumber}
+          endGameCallback={endGameCallback}
+        />
+      ) : (
+        <NewGame callback={setSecretNumberCallback} />
+      )}
+    </div>
   );
 };
