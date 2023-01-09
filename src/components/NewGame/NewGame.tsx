@@ -1,6 +1,5 @@
 import { useRef, useState } from "react";
 import { Button } from "react-bootstrap";
-import { isReturnStatement } from "typescript";
 
 export const NewGame = (props: {
   callback: (secret: number) => void;
