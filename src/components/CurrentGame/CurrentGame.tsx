@@ -3,8 +3,11 @@ import { Bet } from "./Bet";
 import { Limits } from "./Limits";
 import { SecretNumber } from "./SecretNumber";
 
-export const CurrentGame = (props: { secretNumber: number }) => {
-  const { secretNumber } = props;
+export const CurrentGame = (props: {
+  secretNumber: number;
+  endGameCallback: () => void;
+}) => {
+  const { secretNumber, endGameCallback } = props;
   const [bet, setBet] = useState(0);
   const [min, setMin] = useState(0);
   const [max, setMax] = useState(1000);
@@ -15,7 +18,7 @@ export const CurrentGame = (props: { secretNumber: number }) => {
     if (bet) {
       if (bet === secretNumber) {
         // hai perso
-        alert("hai persoooo"); // TODO: togliere alert ed implementare
+        endGameCallback();
       } else {
         // sei salvo, aggiorno i limiti per il prossimo turno
         if (bet < secretNumber) {
