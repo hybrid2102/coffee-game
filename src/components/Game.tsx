@@ -4,18 +4,15 @@ import { NewGame } from "./NewGame";
 
 export const Game = () => {
   const [secretNumber, setSecretNumber] = useState(0);
-  const [bet, setBet] = useState(0);
 
   useEffect(() => {
     console.log(secretNumber);
-    console.log(bet);
-  }, [secretNumber, bet]);
+  }, [secretNumber]);
 
   const setSecretNumberCallback = (secret: number) => setSecretNumber(secret);
-  const setBetCallback = (bet: number) => setBet(bet);
 
   return secretNumber ? (
-    <CurrentGame secretNumber={secretNumber} callback={setBetCallback} />
+    <CurrentGame secretNumber={secretNumber} />
   ) : (
     <NewGame callback={setSecretNumberCallback} />
   );
