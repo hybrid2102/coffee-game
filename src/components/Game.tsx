@@ -13,9 +13,10 @@ export const Game = () => {
 
   const setSecretNumberCallback = (secret: number) => setSecretNumber(secret);
   const endGameCallback = () => setEndGame(true);
+  const restartCallback = () => setSecretNumber(0);
 
   return endGame ? (
-    <EndGame />
+    <EndGame restartCallback={restartCallback} />
   ) : secretNumber ? (
     <CurrentGame
       secretNumber={secretNumber}
