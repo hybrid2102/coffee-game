@@ -27,7 +27,10 @@ export const Game = () => {
   return (
     <div className="container text-center">
       {endGame ? (
-        <EndGame restartCallback={restartCallback} />
+        <EndGame
+          secretNumber={secretNumber}
+          restartCallback={restartCallback}
+        />
       ) : secretNumber ? (
         <CurrentGame
           secretNumber={secretNumber}
