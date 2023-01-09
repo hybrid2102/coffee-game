@@ -9,7 +9,7 @@ export const CurrentGame = (props: {
 }) => {
   const { secretNumber, endGameCallback } = props;
   const [bet, setBet] = useState(0);
-  const [min, setMin] = useState(0);
+  const [min, setMin] = useState(1);
   const [max, setMax] = useState(1000);
 
   const setBetCallback = (bet: number) => setBet(bet);
