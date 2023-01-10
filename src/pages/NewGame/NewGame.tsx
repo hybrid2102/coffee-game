@@ -29,7 +29,7 @@ export const NewGame = (props: {
 
   return (
     <>
-      <form onSubmit={handleSubmit} className="row justify-content-center">
+      <form onSubmit={handleSubmit} className="row justify-content-center mb-5">
         <div className="col-auto">
           <input
             type="text"

@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 
 export const Header = () => {
   return (
-    <div className="px-3 py-2 text-bg-dark">
+    <div className="px-3 py-2 text-bg-dark mb-4">
       <div className="container">
         <header className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
           <span className="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
