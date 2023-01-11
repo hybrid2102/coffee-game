@@ -18,7 +18,7 @@ export const Header = () => {
               icon={faCoffee}
               size="2xl"
             />
-            <span className="fs-4">Coffe Game</span>
+            <span className="fs-4">C-Coffee</span>
           </span>
 
           <ul className="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
