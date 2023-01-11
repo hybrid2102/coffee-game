@@ -23,9 +23,9 @@ export const Game = () => {
       } else {
         // sei salvo, aggiorno i limiti per il prossimo turno
         if (bet < secretNumber) {
-          setMin(bet);
+          setMin(bet + 1);
         } else {
-          setMax(bet);
+          setMax(bet - 1);
         }
       }
     }
