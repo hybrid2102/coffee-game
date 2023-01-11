@@ -5,7 +5,7 @@ import { GameContext } from "../App";
 export const Help = () => {
   const { defaultMin: min, defaultMax: max } = useContext(GameContext);
   return (
-    <div className="">
+    <div>
       <h1 className="display-6 fw-bold text-center">Scopo del gioco</h1>
       <div className="col-lg-7 mx-auto text-center">
         <p className="lead mb-4">
