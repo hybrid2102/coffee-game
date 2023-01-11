@@ -35,6 +35,9 @@ export const Game = () => {
   const restartCallback = () => {
     setEndGame(false);
     setSecretNumber(0);
+    setBet(0);
+    setMin(1);
+    setMax(1000);
   };
 
   return (
