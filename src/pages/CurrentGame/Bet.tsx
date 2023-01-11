@@ -11,6 +11,7 @@ export const Bet = (props: { callback: (e: any) => void }) => {
     //let secret = e.target.querySelector("#bet").value;
     if (inputRef.current) {
       const secret = +inputRef.current.value;
+      inputRef.current.value = "";
       callback(secret);
     }
   };
