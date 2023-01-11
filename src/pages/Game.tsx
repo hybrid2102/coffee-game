@@ -11,7 +11,7 @@ export const Game = () => {
   const [max, setMax] = useState(defaultMax);
   const [secretNumber, setSecretNumber] = useState(0);
   const [endGame, setEndGame] = useState(false);
-  const [bet, setBet] = useState(0);
+  const [bet, setBet] = useState(0); // test commit su main
 
   const setBetCallback = (bet: number) => setBet(bet);
 
