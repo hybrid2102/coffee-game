@@ -1,11 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { GameContext } from "../App";
 import { CurrentGame } from "./CurrentGame/CurrentGame";
 import { EndGame } from "./EndGame/EndGame";
 import { NewGame } from "./NewGame/NewGame";
 
 export const Game = () => {
-  const [min, setMin] = useState(1);
-  const [max, setMax] = useState(1000);
+  const { defaultMin, defaultMax, error } = useContext(GameContext);
+
+  const [min, setMin] = useState(defaultMin);
+  const [max, setMax] = useState(defaultMax);
   const [secretNumber, setSecretNumber] = useState(0);
   const [endGame, setEndGame] = useState(false);
   const [bet, setBet] = useState(0);
@@ -13,7 +16,7 @@ export const Game = () => {
   const setBetCallback = (bet: number) => setBet(bet);
 
   useEffect(() => {
-    if (bet) {
+    if (bet >= defaultMin && bet <= defaultMax) {
       if (bet === secretNumber) {
         // hai perso
         setEndGame(true);
@@ -36,8 +39,8 @@ export const Game = () => {
     setEndGame(false);
     setSecretNumber(0);
     setBet(0);
-    setMin(1);
-    setMax(1000);
+    setMin(defaultMin);
+    setMax(defaultMax);
   };
 
   return (
@@ -55,7 +58,14 @@ export const Game = () => {
           setBetCallback={setBetCallback}
         />
       ) : (
-        <NewGame callback={setSecretNumberCallback} min={min} max={max} />
+        <NewGame callback={setSecretNumberCallback} />
+      )}
+      {error && (
+        <div className="row justify-content-center">
+          <div className="col-auto ">
+            <p className="alert alert-danger">{error}</p>
+          </div>
+        </div>
       )}
     </div>
   );

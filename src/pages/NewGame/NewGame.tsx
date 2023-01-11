@@ -1,25 +1,30 @@
-import { useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { Button } from "react-bootstrap";
+import { GameContext } from "../../App";
 
-export const NewGame = (props: {
-  callback: (secret: number) => void;
-  min: number;
-  max: number;
-}) => {
-  const { callback, min, max } = props;
+export const NewGame = (props: { callback: (secret: number) => void }) => {
+  const { callback } = props;
+  const { defaultMin, defaultMax, setError } = useContext(GameContext);
 
-  const [error, setError] = useState(false);
+  //const [error, setError] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
     //let secret = e.target.querySelector("#secretNumber").value;
     if (inputRef.current) {
-      setError(false);
+      setError("");
       let secret = +inputRef.current.value;
 
-      if (secret < min || secret > max) {
-        setError(true);
+      if (isNaN(secret)) {
+        setError("Inserire un numero valido");
+        return;
+      }
+
+      if (secret < defaultMin || secret > defaultMax) {
+        setError(
+          `Inserire un numero compreso tra ${defaultMin} e ${defaultMax}`
+        );
         return;
       }
 
@@ -44,19 +49,6 @@ export const NewGame = (props: {
           </Button>
         </div>
       </form>
-
-      {error && (
-        <>
-          <br />
-          <div className="row justify-content-center">
-            <div className="col-auto ">
-              <p className="alert alert-danger">
-                Inserisci un numero tra {min} e {max}
-              </p>
-            </div>
-          </div>
-        </>
-      )}
     </>
   );
 };
