@@ -7,14 +7,16 @@ export const EndGame = (props: {
 }) => {
   const { secretNumber, restartCallback } = props;
   return (
-    <div>
-      <div className="alert alert-danger">
+    <>
+      <div className="alert alert-danger" role="alert">
         <p>
           Il numero era proprio <strong>{secretNumber}</strong>! 🙃
+          <br />
+          <br />
+          Hai perso, devi pagare il caffè. ☕
         </p>
-        <p>Hai perso, devi pagare il caffè. ☕</p>
       </div>
       <Button onClick={restartCallback}>Ricomincia</Button>
-    </div>
+    </>
   );
 };

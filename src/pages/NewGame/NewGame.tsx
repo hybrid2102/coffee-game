@@ -21,9 +21,9 @@ export const NewGame = (props: { callback: (secret: number) => void }) => {
         return;
       }
 
-      if (secret < defaultMin || secret > defaultMax) {
+      if (secret <= defaultMin || secret >= defaultMax) {
         setError(
-          `Inserire un numero compreso tra ${defaultMin} e ${defaultMax}`
+          `Inserire un numero compreso tra ${defaultMin} e ${defaultMax} (esclusi)`
         );
         return;
       }
