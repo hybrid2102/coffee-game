@@ -1,7 +1,7 @@
 import { Bet } from "./Bet";
 import { Hint } from "./Hint";
 import { NextRound } from "./NextRound";
-import { SecretNumber } from "./SecretNumber";
+import { ShowSecretNumber } from "./ShowSecretNumber";
 
 export const CurrentGame = (props: {
   secretNumber: number;
@@ -9,15 +9,17 @@ export const CurrentGame = (props: {
   max: number;
   setBetCallback: (e: any) => void;
   betForNextRound: number;
+  wink: boolean;
 }) => {
-  const { secretNumber, min, max, setBetCallback, betForNextRound } = props;
+  const { secretNumber, min, max, setBetCallback, betForNextRound, wink } =
+    props;
 
   return (
-    <div className="row justify-content-center">
-      <NextRound bet={betForNextRound} />
+    <>
+      <NextRound bet={betForNextRound} wink={wink} />
       <Hint min={min} max={max} />
       <Bet callback={setBetCallback} />
-      <SecretNumber secretNumber={secretNumber} />
-    </div>
+      <ShowSecretNumber secretNumber={secretNumber} />
+    </>
   );
 };

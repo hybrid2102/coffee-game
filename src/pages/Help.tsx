@@ -1,9 +1,9 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { GameContext } from "../App";
 
 export const Help = () => {
-  const { defaultMin: min, defaultMax: max } = useContext(GameContext);
+  const { defaultMin, defaultMax } = useContext(GameContext);
   return (
     <div>
       <h1 className="display-6 fw-bold text-center">Scopo del gioco</h1>
@@ -17,12 +17,12 @@ export const Help = () => {
       <div className="col-lg-7 mx-auto">
         <ul className="text-left">
           <li>
-            il banco sceglie un numero segreto da {min} a {max}, estremi esclusi
-            (es: "890")
+            il banco sceglie un numero segreto da {defaultMin} a {defaultMax},
+            estremi esclusi (es: "890")
           </li>
           <li>
-            il primo giocatore scommette con un numero da {min} a {max}, estremi
-            esclusi (es: "300")
+            il primo giocatore scommette con un numero da {defaultMin} a{" "}
+            {defaultMax}, estremi esclusi (es: "300")
           </li>
           <li>
             il banco controlla il numero segreto:
