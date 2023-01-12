@@ -39,7 +39,7 @@ export const NewGame = (props: { callback: (secret: number) => void }) => {
           <input
             type="text"
             className="form-control"
-            placeholder="Inserisci il numero"
+            placeholder="Inserisci il numero segreto"
             ref={inputRef}
           />
         </div>
