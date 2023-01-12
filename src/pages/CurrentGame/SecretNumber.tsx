@@ -11,7 +11,7 @@ export const SecretNumber = (props: { secretNumber: number }) => {
       alert(`Il numero segreto è ${secretNumber}. Acqua in bocca!`);
   };
   return (
-    <div>
+    <div className="d-grid mt-5">
       <Button onClick={mostraNumero} className="btn-warning">
         Mostra il numero segreto
       </Button>

@@ -12,6 +12,7 @@ export const Game = () => {
   const [secretNumber, setSecretNumber] = useState(0);
   const [endGame, setEndGame] = useState(false);
   const [bet, setBet] = useState(0);
+  const [wink, setWink] = useState(false);
 
   const setBetCallback = (bet: number) => {
     if (bet >= min && bet <= max) {
@@ -35,6 +36,12 @@ export const Game = () => {
     }
   }, [bet, secretNumber]);
 
+  useEffect(() => {
+    if (max - min === 2) {
+      setWink(true);
+    }
+  }, [min, max]);
+
   const setSecretNumberCallback = (secret: number) => {
     setSecretNumber(secret);
   };
@@ -45,6 +52,7 @@ export const Game = () => {
     setBet(0);
     setMin(defaultMin);
     setMax(defaultMax);
+    setWink(false);
   };
 
   return (
@@ -61,6 +69,7 @@ export const Game = () => {
           max={max}
           setBetCallback={setBetCallback}
           betForNextRound={bet}
+          wink={wink}
         />
       ) : (
         <NewGame startGameCallback={setSecretNumberCallback} />

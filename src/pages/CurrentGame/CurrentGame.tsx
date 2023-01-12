@@ -9,12 +9,14 @@ export const CurrentGame = (props: {
   max: number;
   setBetCallback: (e: any) => void;
   betForNextRound: number;
+  wink: boolean;
 }) => {
-  const { secretNumber, min, max, setBetCallback, betForNextRound } = props;
+  const { secretNumber, min, max, setBetCallback, betForNextRound, wink } =
+    props;
 
   return (
     <>
-      <NextRound bet={betForNextRound} />
+      <NextRound bet={betForNextRound} wink={wink} />
       <Hint min={min} max={max} />
       <Bet callback={setBetCallback} />
       <SecretNumber secretNumber={secretNumber} />

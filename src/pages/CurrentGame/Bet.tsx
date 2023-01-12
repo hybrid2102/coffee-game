@@ -23,7 +23,9 @@ export const Bet = (props: { callback: (e: any) => void }) => {
         placeholder="Prova a NON indovinare..."
         ref={inputRef}
       />
-      <Button type="submit">Prova</Button>
+      <div className="d-grid mt-3">
+        <Button type="submit">Scommetti</Button>
+      </div>
     </form>
   );
 };
