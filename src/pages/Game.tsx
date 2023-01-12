@@ -48,7 +48,7 @@ export const Game = () => {
   };
 
   return (
-    <div className="container text-center">
+    <>
       {endGame ? (
         <EndGame
           secretNumber={secretNumber}
@@ -63,15 +63,9 @@ export const Game = () => {
           betForNextRound={bet}
         />
       ) : (
-        <NewGame callback={setSecretNumberCallback} />
+        <NewGame startGameCallback={setSecretNumberCallback} />
       )}
-      {error && (
-        <div className="row justify-content-center">
-          <div className="col-auto ">
-            <p className="alert alert-danger">{error}</p>
-          </div>
-        </div>
-      )}
-    </div>
+      {error && <p className="alert alert-danger mt-4">{error}</p>}
+    </>
   );
 };

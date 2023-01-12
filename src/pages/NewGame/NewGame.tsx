@@ -1,54 +1,63 @@
 import { useContext, useRef, useState } from "react";
 import { Button } from "react-bootstrap";
 import { GameContext } from "../../App";
+import { ModeSelector } from "./ModeSelector";
 
-export const NewGame = (props: { callback: (secret: number) => void }) => {
-  const { callback } = props;
-  const { defaultMin, defaultMax, setError } = useContext(GameContext);
+function randomIntFromInterval(min: number, max: number) {
+  // min and max included
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
 
-  //const [error, setError] = useState(false);
+export const NewGame = (props: {
+  startGameCallback: (secret: number) => void;
+}) => {
+  const { startGameCallback } = props;
   const inputRef = useRef<HTMLInputElement>(null);
+  const { defaultMin, defaultMax, setError } = useContext(GameContext);
+  const [manualMode, setManualMode] = useState(false);
+
+  const modeCallback = (mode: boolean) => setManualMode(mode);
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    //let secret = e.target.querySelector("#secretNumber").value;
-    if (inputRef.current) {
-      setError("");
-      let secret = +inputRef.current.value;
+    setError("");
 
-      if (isNaN(secret)) {
+    let secretNumber: number;
+
+    if (manualMode) {
+      if (!inputRef.current) return;
+      secretNumber = +inputRef.current.value;
+      if (isNaN(secretNumber)) {
         setError("Inserire un numero valido");
         return;
       }
-
-      if (secret <= defaultMin || secret >= defaultMax) {
+      if (secretNumber <= defaultMin || secretNumber >= defaultMax) {
         setError(
           `Inserire un numero compreso tra ${defaultMin} e ${defaultMax} (esclusi)`
         );
         return;
       }
-
-      callback(secret);
+      startGameCallback(secretNumber);
+    } else {
+      secretNumber = randomIntFromInterval(defaultMin + 1, defaultMax - 1);
+      startGameCallback(secretNumber);
     }
   };
 
   return (
-    <>
-      <form onSubmit={handleSubmit} className="row justify-content-center mb-5">
-        <div className="col-auto">
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Inserisci il numero segreto"
-            ref={inputRef}
-          />
-        </div>
-        <div className="col-auto">
-          <Button type="submit" className="form-control">
-            Inizia il gioco
-          </Button>
-        </div>
-      </form>
-    </>
+    <form onSubmit={handleSubmit}>
+      <ModeSelector modeCallback={modeCallback} />
+      {manualMode && (
+        <input
+          type="number"
+          className="form-control my-3"
+          placeholder="Imposta il numero segreto..."
+          ref={inputRef}
+        />
+      )}
+      <div className="d-grid">
+        <Button type="submit">Inizia la partita</Button>
+      </div>
+    </form>
   );
 };

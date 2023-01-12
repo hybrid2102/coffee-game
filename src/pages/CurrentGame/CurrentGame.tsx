@@ -13,11 +13,11 @@ export const CurrentGame = (props: {
   const { secretNumber, min, max, setBetCallback, betForNextRound } = props;
 
   return (
-    <div className="row justify-content-center">
+    <>
       <NextRound bet={betForNextRound} />
       <Hint min={min} max={max} />
       <Bet callback={setBetCallback} />
       <SecretNumber secretNumber={secretNumber} />
-    </div>
+    </>
   );
 };

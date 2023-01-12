@@ -8,7 +8,6 @@ export const Bet = (props: { callback: (e: any) => void }) => {
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    //let secret = e.target.querySelector("#bet").value;
     if (inputRef.current) {
       const secret = +inputRef.current.value;
       inputRef.current.value = "";
@@ -17,18 +16,14 @@ export const Bet = (props: { callback: (e: any) => void }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="row justify-content-center mb-5">
-      <div className="col-auto">
-        <input
-          type="text"
-          className="form-control"
-          placeholder="Prova a NON indovinare..."
-          ref={inputRef}
-        />
-      </div>
-      <div className="col-auto">
-        <Button type="submit">Prova</Button>
-      </div>
+    <form onSubmit={handleSubmit}>
+      <input
+        type="number"
+        className="form-control"
+        placeholder="Prova a NON indovinare..."
+        ref={inputRef}
+      />
+      <Button type="submit">Prova</Button>
     </form>
   );
 };
