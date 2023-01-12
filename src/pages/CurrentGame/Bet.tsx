@@ -16,14 +16,16 @@ export const Bet = (props: { callback: (e: any) => void }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="number"
-        className="form-control"
-        placeholder="Prova a NON indovinare..."
-        ref={inputRef}
-      />
-      <div className="d-grid mt-3">
+    <form onSubmit={handleSubmit} className="row justify-content-md-center">
+      <div className="col col-sm-4">
+        <input
+          type="number"
+          className="form-control my-3"
+          placeholder="Prova a NON indovinare..."
+          ref={inputRef}
+        />
+      </div>
+      <div className="text-center mt-3">
         <Button type="submit">Scommetti</Button>
       </div>
     </form>

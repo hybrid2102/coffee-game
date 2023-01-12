@@ -45,17 +45,19 @@ export const NewGame = (props: {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="row justify-content-md-center">
       <ModeSelector modeCallback={modeCallback} />
       {manualMode && (
-        <input
-          type="number"
-          className="form-control my-3"
-          placeholder="Imposta il numero segreto..."
-          ref={inputRef}
-        />
+        <div className="col col-sm-4">
+          <input
+            type="number"
+            className="form-control my-3"
+            placeholder="Imposta il numero segreto..."
+            ref={inputRef}
+          />
+        </div>
       )}
-      <div className="d-grid">
+      <div>
         <Button type="submit">Inizia la partita</Button>
       </div>
     </form>
