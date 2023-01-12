@@ -13,10 +13,14 @@ export const Game = () => {
   const [endGame, setEndGame] = useState(false);
   const [bet, setBet] = useState(0);
 
-  const setBetCallback = (bet: number) => setBet(bet);
+  const setBetCallback = (bet: number) => {
+    if (bet >= min && bet <= max) {
+      setBet(bet);
+    }
+  };
 
   useEffect(() => {
-    if (bet >= defaultMin && bet <= defaultMax) {
+    if (bet >= min && bet <= max) {
       if (bet === secretNumber) {
         // hai perso
         setEndGame(true);
