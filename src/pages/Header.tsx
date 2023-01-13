@@ -4,10 +4,49 @@ import {
   faInfo,
   faPlay,
   faQuestion,
+  IconDefinition,
 } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
+import { useEffect, useMemo, useState } from "react";
+
+enum PagesEnun {
+  play,
+  help,
+  about,
+}
 
 export const Header = () => {
+  //const [currentPage, setCurrentPage] = useState<PagesEnun>(PagesEnun.help);
+
+  // const linksClass = useMemo(() => {
+  //   let newCurrentPage = currentPage;
+  //   if (location.pathname.endsWith("/")) {
+  //     newCurrentPage = PagesEnun.play;
+  //   } else if (location.pathname.endsWith("/help")) {
+  //     newCurrentPage = PagesEnun.help;
+  //   } else if (location.pathname.endsWith("/about")) {
+  //     newCurrentPage = PagesEnun.about;
+  //   } else newCurrentPage = PagesEnun.play;
+
+  //   const play = `nav-link ${
+  //     newCurrentPage == PagesEnun.play ? "text-white" : "text-secondary"
+  //   }`;
+  //   const help = `nav-link ${
+  //     newCurrentPage == PagesEnun.help ? "text-white" : "text-secondary"
+  //   }`;
+  //   const about = `nav-link ${
+  //     newCurrentPage == PagesEnun.about ? "text-white" : "text-secondary"
+  //   }`;
+
+  //   setCurrentPage(newCurrentPage);
+
+  //   return {
+  //     play,
+  //     about,
+  //     help,
+  //   };
+  // }, [location.pathname]);
+
   return (
     <div className="px-3 py-2 text-bg-dark mb-4">
       <div className="container">
@@ -22,39 +61,40 @@ export const Header = () => {
           </span>
 
           <ul className="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
-            <li>
-              <Link to="/" className="nav-link text-white">
-                <FontAwesomeIcon
-                  className="bi d-block mx-auto mb-1"
-                  icon={faPlay}
-                  size="xl"
-                />
-                Play
-              </Link>
-            </li>
-            <li>
-              <Link to="/help" className="nav-link text-white">
-                <FontAwesomeIcon
-                  className="bi d-block mx-auto mb-1"
-                  icon={faQuestion}
-                  size="xl"
-                />
-                Help
-              </Link>
-            </li>
-            <li>
-              <Link to="/about" className="nav-link text-white">
-                <FontAwesomeIcon
-                  icon={faInfo}
-                  className="bi d-block mx-auto mb-1"
-                  size="xl"
-                />
-                About
-              </Link>
-            </li>
+            <HeaderItemLink to="/" key={0} icon={faPlay} text="play" />
+            <HeaderItemLink to="/help" key={1} icon={faQuestion} text="help" />
+            <HeaderItemLink to="/about" key={2} icon={faInfo} text="about" />
           </ul>
         </header>
       </div>
     </div>
+  );
+};
+
+interface HeaderItemLinkProps {
+  to: string;
+  icon: IconDefinition;
+  text: string;
+}
+const HeaderItemLink = (props: HeaderItemLinkProps) => {
+  const { to, icon, text } = props;
+  
+  return (
+    <li>
+      <NavLink
+        exact={true}
+        to={to}
+        className={(isActive) =>
+          isActive ? "nav-link text-white" : "nav-link text-secondary"
+        }
+      >
+        <FontAwesomeIcon
+          className="bi d-block mx-auto mb-1"
+          icon={icon}
+          size="xl"
+        />
+        {text}
+      </NavLink>
+    </li>
   );
 };

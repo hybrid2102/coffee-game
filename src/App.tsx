@@ -23,7 +23,6 @@ function App() {
 
   return (
     <BrowserRouter>
-      <StrictMode>
         <Header />
         <GameContext.Provider value={gameContext}>
           <Page>
@@ -35,7 +34,6 @@ function App() {
             </Switch>
           </Page>
         </GameContext.Provider>
-      </StrictMode>
     </BrowserRouter>
   );
 }
