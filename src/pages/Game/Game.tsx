@@ -1,5 +1,5 @@
-import React, { useContext, useEffect, useState } from "react";
-import { GameContext } from "../App";
+import { useContext, useEffect, useState } from "react";
+import { GameContext } from "../../App";
 import { CurrentGame } from "./CurrentGame/CurrentGame";
 import { EndGame } from "./EndGame/EndGame";
 import { NewGame } from "./NewGame/NewGame";

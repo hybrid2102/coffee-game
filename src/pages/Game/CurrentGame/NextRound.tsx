@@ -1,4 +1,3 @@
-import React from "react";
 export const NextRound = (props: { bet: number; wink: boolean }) => {
   const { bet, wink } = props;
   return bet ? (

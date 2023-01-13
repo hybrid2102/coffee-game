@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 export const ModeSelector = (props: {
   modeCallback: (mode: boolean) => void;

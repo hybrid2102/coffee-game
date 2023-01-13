@@ -1,4 +1,3 @@
-import React from "react";
 import { Bet } from "./Bet";
 import { Hint } from "./Hint";
 import { NextRound } from "./NextRound";

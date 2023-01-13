@@ -1,5 +1,3 @@
-import React from "react";
-
 export const Hint = (props: { min: number; max: number }) => {
   const { min, max } = props;
   return (

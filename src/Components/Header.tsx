@@ -1,4 +1,3 @@
-import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCoffee,
@@ -7,47 +6,9 @@ import {
   faQuestion,
   IconDefinition,
 } from "@fortawesome/free-solid-svg-icons";
-import { Link, NavLink, useLocation } from "react-router-dom";
-import { useEffect, useMemo, useState } from "react";
-
-enum PagesEnun {
-  play,
-  help,
-  about,
-}
+import { NavLink } from "react-router-dom";
 
 export const Header = () => {
-  //const [currentPage, setCurrentPage] = useState<PagesEnun>(PagesEnun.help);
-
-  // const linksClass = useMemo(() => {
-  //   let newCurrentPage = currentPage;
-  //   if (location.pathname.endsWith("/")) {
-  //     newCurrentPage = PagesEnun.play;
-  //   } else if (location.pathname.endsWith("/help")) {
-  //     newCurrentPage = PagesEnun.help;
-  //   } else if (location.pathname.endsWith("/about")) {
-  //     newCurrentPage = PagesEnun.about;
-  //   } else newCurrentPage = PagesEnun.play;
-
-  //   const play = `nav-link ${
-  //     newCurrentPage == PagesEnun.play ? "text-white" : "text-secondary"
-  //   }`;
-  //   const help = `nav-link ${
-  //     newCurrentPage == PagesEnun.help ? "text-white" : "text-secondary"
-  //   }`;
-  //   const about = `nav-link ${
-  //     newCurrentPage == PagesEnun.about ? "text-white" : "text-secondary"
-  //   }`;
-
-  //   setCurrentPage(newCurrentPage);
-
-  //   return {
-  //     play,
-  //     about,
-  //     help,
-  //   };
-  // }, [location.pathname]);
-
   return (
     <div className="px-3 py-2 text-bg-dark mb-4">
       <div className="container">
@@ -79,7 +40,7 @@ interface HeaderItemLinkProps {
 }
 const HeaderItemLink = (props: HeaderItemLinkProps) => {
   const { to, icon, text } = props;
-  
+
   return (
     <li>
       <NavLink
