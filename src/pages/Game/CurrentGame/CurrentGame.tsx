@@ -7,7 +7,7 @@ export const CurrentGame = (props: {
   secretNumber: number;
   min: number;
   max: number;
-  setBetCallback: (e: any) => void;
+  setBetCallback: (x: number) => void;
   betForNextRound: number;
   wink: boolean;
 }) => {

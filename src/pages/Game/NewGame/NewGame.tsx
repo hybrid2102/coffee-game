@@ -1,8 +1,8 @@
 import React from "react";
 import { useContext, useRef, useState } from "react";
 import { Button } from "react-bootstrap";
-import { GameContext } from "../../App";
-import { ModeSelector } from "../Game/NewGame/ModeSelector";
+import { GameContext } from "../../../App";
+import { ModeSelector } from "./ModeSelector";
 
 function randomIntFromInterval(min: number, max: number) {
   // min and max included
@@ -14,8 +14,7 @@ export const NewGame = (props: {
 }) => {
   const { startGameCallback } = props;
   const inputRef = useRef<HTMLInputElement>(null);
-  const { defaultMin, defaultMax } = useContext(GameContext);
-  const { setError } = useContext(GameContext);
+  const { defaultMin, defaultMax, setError } = useContext(GameContext);
   const [manualMode, setManualMode] = useState(false);
 
   const modeCallback = (mode: boolean) => setManualMode(mode);
