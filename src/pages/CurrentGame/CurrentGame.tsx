@@ -1,3 +1,4 @@
+import React from "react";
 import { Bet } from "./Bet";
 import { Hint } from "./Hint";
 import { NextRound } from "./NextRound";
@@ -7,7 +8,7 @@ export const CurrentGame = (props: {
   secretNumber: number;
   min: number;
   max: number;
-  setBetCallback: (e: any) => void;
+  setBetCallback: (x: number) => void;
   betForNextRound: number;
   wink: boolean;
 }) => {

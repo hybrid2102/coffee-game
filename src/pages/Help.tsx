@@ -1,3 +1,4 @@
+import React from "react";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { GameContext } from "../App";
@@ -18,11 +19,11 @@ export const Help = () => {
         <ul className="text-left">
           <li>
             il banco sceglie un numero segreto da {defaultMin} a {defaultMax},
-            estremi esclusi (es: "890")
+            estremi esclusi (es: &quot890&quot)
           </li>
           <li>
             il primo giocatore scommette con un numero da {defaultMin} a{" "}
-            {defaultMax}, estremi esclusi (es: "300")
+            {defaultMax}, estremi esclusi (es: &quot300&quot)
           </li>
           <li>
             il banco controlla il numero segreto:
@@ -33,17 +34,19 @@ export const Help = () => {
               </li>
               <li>
                 altrimenti il banco rivela se il numero scommesso è minore o
-                maggiore del numero segreto (es: "il numero segreto è maggiore
-                di 300")
+                maggiore del numero segreto (es: &quotil numero segreto è
+                maggiore di 300&quot)
               </li>
             </ul>
           </li>
           <li>
-            il banco aggiorna il limite minimo e massimo (es: "da 300 a 1000")
+            il banco aggiorna il limite minimo e massimo (es: &quotda 300 a
+            1000&quot)
           </li>
           <li>
             adesso è il turno del secondo giocatore, che dovrò scommettere con
-            un nuovo numero, all'interno dell'intervallo appena aggiornato
+            un nuovo numero, all&aposinterno dell&aposintervallo appena
+            aggiornato
           </li>
           <li>
             il gioco termina quando un giocatore indovina il numero segreto,

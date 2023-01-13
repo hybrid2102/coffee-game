@@ -1,12 +1,12 @@
 import React, { useRef } from "react";
 import { Button } from "react-bootstrap";
 
-export const Bet = (props: { callback: (e: any) => void }) => {
+export const Bet = (props: { callback: (x: number) => void }) => {
   const { callback } = props;
 
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (inputRef.current) {
       const secret = +inputRef.current.value;

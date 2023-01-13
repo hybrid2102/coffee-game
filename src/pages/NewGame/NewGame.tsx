@@ -1,3 +1,4 @@
+import React from "react";
 import { useContext, useRef, useState } from "react";
 import { Button } from "react-bootstrap";
 import { GameContext } from "../../App";
@@ -18,7 +19,7 @@ export const NewGame = (props: {
 
   const modeCallback = (mode: boolean) => setManualMode(mode);
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setError("");
 
