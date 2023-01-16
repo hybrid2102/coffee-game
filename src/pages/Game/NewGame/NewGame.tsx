@@ -2,22 +2,19 @@ import React from "react";
 import { useContext, useRef, useState } from "react";
 import { Button } from "react-bootstrap";
 import { GameContext } from "../../../App";
+import { useRandom } from "../../../Helpers/useRandom";
 import { ModeSelector } from "./ModeSelector";
-
-function randomIntFromInterval(min: number, max: number) {
-  // min and max included
-  return Math.floor(Math.random() * (max - min + 1) + min);
-}
 
 export const NewGame = (props: {
   startGameCallback: (secret: number) => void;
 }) => {
   const { startGameCallback } = props;
   const inputRef = useRef<HTMLInputElement>(null);
-  const { defaultMin, defaultMax, setError } = useContext(GameContext);
+  const { defaultMin, defaultMax } = useContext(GameContext);
+  const { setError } = useContext(GameContext);
   const [manualMode, setManualMode] = useState(false);
 
-  const modeCallback = (mode: boolean) => setManualMode(mode);
+  const manualModeCallback = (mode: boolean) => setManualMode(mode);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -40,15 +37,15 @@ export const NewGame = (props: {
       }
       startGameCallback(secretNumber);
     } else {
-      secretNumber = randomIntFromInterval(defaultMin + 1, defaultMax - 1);
+      secretNumber = useRandom(defaultMin, defaultMax);
       startGameCallback(secretNumber);
     }
   };
 
   return (
     <form onSubmit={handleSubmit} className="row justify-content-md-center">
-      <ModeSelector modeCallback={modeCallback} />
-      {manualMode && (
+      <ModeSelector manualModeCallback={manualModeCallback} />
+      {manualMode ? (
         <div className="col col-sm-4">
           <input
             type="number"
@@ -57,6 +54,10 @@ export const NewGame = (props: {
             ref={inputRef}
           />
         </div>
+      ) : (
+        <p className="text-center mt-3">
+          <em>Il numero verrà scelto casualmente.</em>
+        </p>
       )}
       <div>
         <Button type="submit">Inizia la partita</Button>
