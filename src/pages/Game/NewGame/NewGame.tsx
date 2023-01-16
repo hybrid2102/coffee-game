@@ -4,55 +4,65 @@ import { Button } from "react-bootstrap";
 import { GameContext } from "../../../App";
 import { useRandom } from "../../../Helpers/useRandom";
 import { ModeSelector } from "./ModeSelector";
+import { useForm, SubmitHandler } from "react-hook-form";
+
+interface IFormInputs {
+  secretInput: number;
+}
 
 export const NewGame = (props: {
   startGameCallback: (secret: number) => void;
 }) => {
   const { startGameCallback } = props;
-  const inputRef = useRef<HTMLInputElement>(null);
   const { defaultMin, defaultMax } = useContext(GameContext);
-  const { setError } = useContext(GameContext);
   const [manualMode, setManualMode] = useState(false);
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<IFormInputs>({ criteriaMode: "all" });
 
   const manualModeCallback = (mode: boolean) => setManualMode(mode);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setError("");
+  const onSubmit: SubmitHandler<IFormInputs> = (data: IFormInputs) => {
+    const secretNumber = manualMode
+      ? data.secretInput
+      : useRandom(defaultMin, defaultMax);
+    startGameCallback(secretNumber);
+  };
 
-    let secretNumber: number;
-
-    if (manualMode) {
-      if (!inputRef.current) return;
-      secretNumber = +inputRef.current.value;
-      if (isNaN(secretNumber)) {
-        setError("Inserire un numero valido");
-        return;
-      }
-      if (secretNumber <= defaultMin || secretNumber >= defaultMax) {
-        setError(
-          `Inserire un numero compreso tra ${defaultMin} e ${defaultMax} (esclusi)`
-        );
-        return;
-      }
-      startGameCallback(secretNumber);
-    } else {
-      secretNumber = useRandom(defaultMin, defaultMax);
-      startGameCallback(secretNumber);
-    }
+  const secretInputOptions = {
+    required: { value: true, message: "inserire un numero valido" },
+    min: {
+      value: defaultMin + 1,
+      message: `inserire un numero maggiore di ${defaultMin}`,
+    },
+    max: {
+      value: defaultMax - 1,
+      message: `inserire un numero minore di ${defaultMax}`,
+    },
   };
 
   return (
-    <form onSubmit={handleSubmit} className="row justify-content-md-center">
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className="row justify-content-md-center"
+    >
       <ModeSelector manualModeCallback={manualModeCallback} />
       {manualMode ? (
         <div className="col col-sm-4">
           <input
             type="number"
+            {...register("secretInput", secretInputOptions)}
             className="form-control my-3"
             placeholder="Imposta il numero segreto..."
-            ref={inputRef}
           />
+          {errors.secretInput && (
+            <p className="alert alert-danger mt-4">
+              {errors.secretInput.message}
+            </p>
+          )}
         </div>
       ) : (
         <p className="text-center mt-3">
