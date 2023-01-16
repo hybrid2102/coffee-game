@@ -9,7 +9,7 @@ You can play at https://ccoffee.netlify.app/
 - [ ] fare pace con text-center
 - [ ] migliorare about
 - [ ] inserire changelog
-- [ ] ottimizzare manualmode in un unico punto di rendering
+- [x] ottimizzare manualmode in un unico punto di rendering
 - [ ] react forms
 - [ ] storico mosse
 - [ ] giocatori
