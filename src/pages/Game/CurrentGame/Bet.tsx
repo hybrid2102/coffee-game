@@ -37,19 +37,25 @@ export const Bet = (props: {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <div>
-        <input
-          type="number"
-          className="form-control my-3"
-          placeholder="Prova a NON indovinare..."
-          {...register("betInput", betInputOptions)}
-        />
-        {errors.betInput && (
-          <p className="alert alert-danger mt-4">{errors.betInput.message}</p>
-        )}
+      <div className="row">
+        <div className="col-8">
+          <input
+            type="number"
+            className="form-control"
+            placeholder="Prova a NON indovinare..."
+            {...register("betInput", betInputOptions)}
+          />
+        </div>
+        <div className="col-4 d-grid">
+          <Button type="submit">Scommetti</Button>
+        </div>
       </div>
-      <div className="mt-3">
-        <Button type="submit">Scommetti</Button>
+      <div className="row">
+        <div className="col">
+          {errors.betInput && (
+            <p className="alert alert-danger mt-3">{errors.betInput.message}</p>
+          )}
+        </div>
       </div>
     </form>
   );

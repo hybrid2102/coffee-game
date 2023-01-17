@@ -4,7 +4,7 @@ import { Bet } from "./Bet";
 import { GameHistory } from "./GameHistory";
 import { Hint } from "./Hint";
 import { NextRound } from "./NextRound";
-import { ShowSecretNumber } from "./ShowSecretNumber";
+import { RevealSecret } from "./RevealSecret";
 
 export const CurrentGame = (props: {
   secretNumber: number;
@@ -27,7 +27,7 @@ export const CurrentGame = (props: {
 
   useEffect(() => {
     if (bet && bet >= min && bet <= max) {
-      if (bet === secretNumber) {
+      if (bet == secretNumber) {
         // hai perso!
         endGameCallback();
       } else {
@@ -53,7 +53,7 @@ export const CurrentGame = (props: {
       <Hint minBet={min} maxBet={max} />
       <Bet minBet={min} maxBet={max} callback={setBetCallback} />
       <GameHistory bet={bet} />
-      <ShowSecretNumber secretNumber={secretNumber} />
+      <RevealSecret secretNumber={secretNumber} />
     </>
   );
 };

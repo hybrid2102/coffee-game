@@ -14,6 +14,7 @@ export const Game = () => {
   const [secretNumber, setSecretNumber] = useState(0);
 
   const setSecretNumberCallback = (secret: number) => {
+    console.log("Secret number: " + secret);
     setSecretNumber(secret);
     setGameStatus(GameStatus.Current);
   };

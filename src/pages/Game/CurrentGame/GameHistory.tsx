@@ -11,11 +11,15 @@ export const GameHistory = (props: { bet: number }) => {
     }
   }, [bet]);
 
-  return (
+  return bet ? (
     <div className="alert alert-info mt-3" role="alert">
-      {history.map((i) => (
-        <p key={i}>{i}</p>
+      {history.map((value, index) => (
+        <p key={index}>
+          Turno {index + 1}: {value}
+        </p>
       ))}
     </div>
+  ) : (
+    <></>
   );
 };
