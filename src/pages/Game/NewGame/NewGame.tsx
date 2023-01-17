@@ -1,5 +1,4 @@
-import React from "react";
-import { useContext, useRef, useState } from "react";
+import { useContext, useState } from "react";
 import { Button } from "react-bootstrap";
 import { GameContext } from "../../../App";
 import { useRandom } from "../../../Helpers/useRandom";
@@ -17,21 +16,14 @@ export const NewGame = (props: {
   const { defaultMin, defaultMax } = useContext(GameContext);
   const [manualMode, setManualMode] = useState(false);
 
+  const manualModeCallback = (mode: boolean) => setManualMode(mode);
+
+  // react-hook-form
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<IFormInputs>({ criteriaMode: "all" });
-
-  const manualModeCallback = (mode: boolean) => setManualMode(mode);
-
-  const onSubmit: SubmitHandler<IFormInputs> = (data: IFormInputs) => {
-    const secretNumber = manualMode
-      ? data.secretInput
-      : useRandom(defaultMin, defaultMax);
-    startGameCallback(secretNumber);
-  };
-
+  } = useForm<IFormInputs>({ mode: "onChange", criteriaMode: "all" });
   const secretInputOptions = {
     required: { value: true, message: "inserire un numero valido" },
     min: {
@@ -43,7 +35,12 @@ export const NewGame = (props: {
       message: `inserire un numero minore di ${defaultMax}`,
     },
   };
-
+  const onSubmit: SubmitHandler<IFormInputs> = (data: IFormInputs) => {
+    const secretNumber = manualMode
+      ? data.secretInput
+      : useRandom(defaultMin, defaultMax);
+    startGameCallback(secretNumber);
+  };
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
@@ -54,9 +51,9 @@ export const NewGame = (props: {
         <div className="col col-sm-4">
           <input
             type="number"
-            {...register("secretInput", secretInputOptions)}
             className="form-control my-3"
             placeholder="Imposta il numero segreto..."
+            {...register("secretInput", secretInputOptions)}
           />
           {errors.secretInput && (
             <p className="alert alert-danger mt-4">

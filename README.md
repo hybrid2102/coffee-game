@@ -10,7 +10,7 @@ You can play at https://ccoffee.netlify.app/
 - [ ] migliorare about
 - [ ] inserire changelog
 - [x] ottimizzare manualmode in un unico punto di rendering
-- [ ] react forms
+- [x] react forms
 - [ ] storico mosse
 - [ ] giocatori
 - [ ] togliere boostrap puro
