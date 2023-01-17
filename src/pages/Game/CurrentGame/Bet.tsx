@@ -6,11 +6,11 @@ interface IFormInputs {
 }
 
 export const Bet = (props: {
-  min: number;
-  max: number;
+  minBet: number;
+  maxBet: number;
   callback: (x: number) => void;
 }) => {
-  const { min, max, callback } = props;
+  const { minBet, maxBet, callback } = props;
 
   // react-hook-form
   const {
@@ -21,12 +21,12 @@ export const Bet = (props: {
   const betInputOptions = {
     required: { value: true, message: "inserire un numero valido" },
     min: {
-      value: min + 1,
-      message: `inserire un numero maggiore di ${min}`,
+      value: minBet + 1,
+      message: `inserire un numero maggiore di ${minBet}`,
     },
     max: {
-      value: max - 1,
-      message: `inserire un numero minore di ${max}`,
+      value: maxBet - 1,
+      message: `inserire un numero minore di ${maxBet}`,
     },
   };
   const onSubmit: SubmitHandler<IFormInputs> = (data: IFormInputs) => {

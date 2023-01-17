@@ -17,8 +17,8 @@ export const CurrentGame = (props: {
   return (
     <>
       <NextRound bet={betForNextRound} wink={wink} />
-      <Hint min={min} max={max} />
-      <Bet min={min} max={max} callback={setBetCallback} />
+      <Hint minBet={min} maxBet={max} />
+      <Bet minBet={min} maxBet={max} callback={setBetCallback} />
       <ShowSecretNumber secretNumber={secretNumber} />
     </>
   );
