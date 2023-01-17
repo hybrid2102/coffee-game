@@ -23,10 +23,10 @@ export const Game = () => {
   useEffect(() => {
     if (bet >= min && bet <= max) {
       if (bet === secretNumber) {
-        // hai perso
+        // hai perso!
         setEndGame(true);
       } else {
-        // sei salvo, aggiorno i limiti per il prossimo turno
+        // sei salvo: aggiorno i limiti per il prossimo turno
         if (bet < secretNumber) {
           setMin(bet);
         } else {
@@ -68,7 +68,7 @@ export const Game = () => {
           min={min}
           max={max}
           setBetCallback={setBetCallback}
-          betForNextRound={bet}
+          bet={bet}
           wink={wink}
         />
       ) : (

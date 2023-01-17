@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Button } from "react-bootstrap";
 import { useForm, SubmitHandler } from "react-hook-form";
 
@@ -16,6 +17,7 @@ export const Bet = (props: {
   const {
     register,
     handleSubmit,
+    resetField,
     formState: { errors },
   } = useForm<IFormInputs>({ mode: "onSubmit", criteriaMode: "all" });
   const betInputOptions = {
@@ -30,6 +32,7 @@ export const Bet = (props: {
     },
   };
   const onSubmit: SubmitHandler<IFormInputs> = (data: IFormInputs) => {
+    resetField("betInput");
     callback(data.betInput);
   };
 
