@@ -21,11 +21,11 @@ export const Bet = (props: {
   const betInputOptions = {
     required: { value: true, message: "inserire un numero valido" },
     min: {
-      value: minBet + 1,
+      value: Number(minBet) + 1,
       message: `inserire un numero maggiore di ${minBet}`,
     },
     max: {
-      value: maxBet - 1,
+      value: Number(maxBet) - 1,
       message: `inserire un numero minore di ${maxBet}`,
     },
   };
