@@ -2,9 +2,9 @@ import Button from "react-bootstrap/Button";
 
 export const EndGame = (props: {
   secretNumber: number;
-  restartCallback: () => void;
+  restartGameCallback: () => void;
 }) => {
-  const { secretNumber, restartCallback } = props;
+  const { secretNumber, restartGameCallback } = props;
   return (
     <>
       <div className="alert alert-danger" role="alert">
@@ -12,7 +12,7 @@ export const EndGame = (props: {
         <br />
         Hai perso, devi pagare il caffè. ☕
       </div>
-      <Button onClick={restartCallback}>Ricomincia</Button>
+      <Button onClick={restartGameCallback}>Ricomincia</Button>
     </>
   );
 };
