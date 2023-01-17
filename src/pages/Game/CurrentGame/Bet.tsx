@@ -17,7 +17,7 @@ export const Bet = (props: {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<IFormInputs>({ mode: "onChange", criteriaMode: "all" });
+  } = useForm<IFormInputs>({ mode: "onSubmit", criteriaMode: "all" });
   const betInputOptions = {
     required: { value: true, message: "inserire un numero valido" },
     min: {
@@ -34,11 +34,8 @@ export const Bet = (props: {
   };
 
   return (
-    <form
-      onSubmit={handleSubmit(onSubmit)}
-      className="row justify-content-md-center"
-    >
-      <div className="col col-sm-4">
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <div>
         <input
           type="number"
           className="form-control my-3"
@@ -49,7 +46,7 @@ export const Bet = (props: {
           <p className="alert alert-danger mt-4">{errors.betInput.message}</p>
         )}
       </div>
-      <div className="text-center mt-3">
+      <div className="mt-3">
         <Button type="submit">Scommetti</Button>
       </div>
     </form>

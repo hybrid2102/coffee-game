@@ -10,10 +10,8 @@ export const ShowSecretNumber = (props: { secretNumber: number }) => {
       alert(`Il numero segreto è ${secretNumber}. Acqua in bocca!`);
   };
   return (
-    <div className="text-center mt-5">
-      <Button onClick={mostraNumero} className="btn-warning">
-        Mostra il numero segreto
-      </Button>
-    </div>
+    <Button onClick={mostraNumero} className="btn-warning mt-5">
+      Mostra il numero segreto
+    </Button>
   );
 };

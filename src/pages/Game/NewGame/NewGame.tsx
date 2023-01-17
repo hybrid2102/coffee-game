@@ -42,13 +42,10 @@ export const NewGame = (props: {
     startGameCallback(secretNumber);
   };
   return (
-    <form
-      onSubmit={handleSubmit(onSubmit)}
-      className="row justify-content-md-center"
-    >
+    <form onSubmit={handleSubmit(onSubmit)}>
       <ModeSelector manualModeCallback={manualModeCallback} />
       {manualMode ? (
-        <div className="col col-sm-4">
+        <div>
           <input
             type="number"
             className="form-control my-3"
@@ -62,7 +59,7 @@ export const NewGame = (props: {
           )}
         </div>
       ) : (
-        <p className="text-center mt-3">
+        <p className="mt-3">
           <em>Il numero verrà scelto casualmente.</em>
         </p>
       )}

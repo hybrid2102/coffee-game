@@ -6,7 +6,7 @@ You can play at https://ccoffee.netlify.app/
 
 - [x] check re-render dei componenti
 - [x] active sui link nella navbar
-- [ ] fare pace con text-center
+- [x] fare pace con text-center
 - [ ] migliorare about
 - [ ] inserire changelog
 - [x] ottimizzare manualmode in un unico punto di rendering
