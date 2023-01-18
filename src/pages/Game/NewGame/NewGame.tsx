@@ -4,6 +4,7 @@ import { ModeSelector } from "./ModeSelector";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useRandom } from "../../../helpers/useRandom";
 import { GameContext, GameSettings } from "../../../App";
+import { Players } from "./Players";
 
 export interface IFormInputs {
   secretInput: number;
@@ -28,7 +29,10 @@ export const NewGame = (props: {
   return (
     <form onSubmit={formCtx.handleSubmit(onSubmit)}>
       <ModeSelector formContext={formCtx} />
-      <Button type="submit">Inizia la partita</Button>
+      <Players />
+      <Button type="submit" className="mt-3">
+        Inizia la partita
+      </Button>
     </form>
   );
 };
