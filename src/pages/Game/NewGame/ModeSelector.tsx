@@ -6,17 +6,13 @@ import { IFormInputs } from "./NewGame";
 
 export const ModeSelector = (props: {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  formContext: UseFormReturn<IFormInputs, any>;
+  formContext: UseFormReturn<IFormInputs>;
 }) => {
   const { formContext } = props;
   const { defaultMin, defaultMax } = useContext<GameSettings>(GameContext);
 
   const [manualMode, setManualMode] = useState(false);
-  const randomSecret = useRandom(defaultMin, defaultMax);
 
-  console.log(`new random:${randomSecret}`);
-
-  // react-hook-form
   const {
     register,
     formState: { errors },
@@ -36,7 +32,6 @@ export const ModeSelector = (props: {
         </label>
       </div>
       <input
-        defaultValue={randomSecret}
         type={manualMode ? "number" : "hidden"}
         disabled={!manualMode}
         className="form-control my-3"

@@ -5,6 +5,7 @@ export const EndGame = (props: {
   restartGameCallback: () => void;
 }) => {
   const { secretNumber, restartGameCallback } = props;
+
   return (
     <>
       <div className="alert alert-danger" role="alert">
@@ -12,7 +13,9 @@ export const EndGame = (props: {
         <br />
         Hai perso, devi pagare il caffè. ☕
       </div>
-      <Button onClick={restartGameCallback}>Ricomincia</Button>
+      <Button autoFocus onClick={restartGameCallback}>
+        Ricomincia
+      </Button>
     </>
   );
 };
