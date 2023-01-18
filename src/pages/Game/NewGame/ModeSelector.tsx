@@ -1,7 +1,6 @@
 import { useContext, useState } from "react";
-import { useFormContext, UseFormReturn } from "react-hook-form";
+import { UseFormReturn } from "react-hook-form";
 import { GameContext, GameSettings } from "../../../App";
-import { useRandom } from "../../../helpers/useRandom";
 import { IFormInputs } from "./NewGame";
 
 export const ModeSelector = (props: {

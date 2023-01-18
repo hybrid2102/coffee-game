@@ -1,7 +1,7 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { Button } from "react-bootstrap";
 import { ModeSelector } from "./ModeSelector";
-import { useForm, FormProvider, SubmitHandler } from "react-hook-form";
+import { useForm, SubmitHandler } from "react-hook-form";
 import { useRandom } from "../../../helpers/useRandom";
 import { GameContext, GameSettings } from "../../../App";
 
