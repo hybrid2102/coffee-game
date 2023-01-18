@@ -3,20 +3,25 @@ import "./App.css";
 import { BrowserRouter } from "react-router-dom";
 import { Route, Switch } from "react-router";
 import { Game } from "./pages/Game/Game";
-import { Header } from "./Components/Header";
+import { Header } from "./components/Header";
 import { About } from "./pages/About";
 import { Help } from "./pages/Help";
 import { NotFound } from "./pages/NotFound";
-import { PageLayout } from "./Components/PageLayout";
+import { PageLayout } from "./components/PageLayout";
 
-export const GameContext = React.createContext<any>(null);
+export interface GameSettings {
+  defaultMin: number;
+  defaultMax: number;
+}
+
+const gameContext: GameSettings = {
+  defaultMin: 1,
+  defaultMax: 1000,
+};
+
+export const GameContext = React.createContext<GameSettings>(gameContext);
 
 function App() {
-  const gameContext = {
-    defaultMin: 1,
-    defaultMax: 1000,
-  };
-
   return (
     <BrowserRouter>
       <Header />

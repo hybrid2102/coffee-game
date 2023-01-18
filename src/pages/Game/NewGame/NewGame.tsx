@@ -1,11 +1,9 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { Button } from "react-bootstrap";
-import { GameContext } from "../../../App";
-import { useRandom } from "../../../Helpers/useRandom";
 import { ModeSelector } from "./ModeSelector";
-import { useForm, SubmitHandler } from "react-hook-form";
+import { useForm, FormProvider, SubmitHandler } from "react-hook-form";
 
-interface IFormInputs {
+export interface IFormInputs {
   secretInput: number;
 }
 
@@ -13,59 +11,19 @@ export const NewGame = (props: {
   startGameCallback: (secret: number) => void;
 }) => {
   const { startGameCallback } = props;
-  const { defaultMin, defaultMax } = useContext(GameContext);
-  const [manualMode, setManualMode] = useState(false);
 
-  const manualModeCallback = (mode: boolean) => setManualMode(mode);
+  const formCtx = useForm<IFormInputs>({
+    criteriaMode: "all",
+  });
 
-  // react-hook-form
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<IFormInputs>({ mode: "onChange", criteriaMode: "all" });
-  const secretInputOptions = {
-    required: { value: true, message: "inserire un numero valido" },
-    min: {
-      value: defaultMin + 1,
-      message: `inserire un numero maggiore di ${defaultMin}`,
-    },
-    max: {
-      value: defaultMax - 1,
-      message: `inserire un numero minore di ${defaultMax}`,
-    },
-  };
   const onSubmit: SubmitHandler<IFormInputs> = (data: IFormInputs) => {
-    const secretNumber = manualMode
-      ? data.secretInput
-      : useRandom(defaultMin, defaultMax);
-    startGameCallback(secretNumber);
+    startGameCallback(data.secretInput);
   };
+
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <ModeSelector manualModeCallback={manualModeCallback} />
-      {manualMode ? (
-        <div>
-          <input
-            type="number"
-            className="form-control my-3"
-            placeholder="Imposta il numero segreto..."
-            {...register("secretInput", secretInputOptions)}
-          />
-          {errors.secretInput && (
-            <p className="alert alert-danger mt-4">
-              {errors.secretInput.message}
-            </p>
-          )}
-        </div>
-      ) : (
-        <p className="mt-3">
-          <em>Il numero verrà scelto casualmente.</em>
-        </p>
-      )}
-      <div>
-        <Button type="submit">Inizia la partita</Button>
-      </div>
+    <form onSubmit={formCtx.handleSubmit(onSubmit)}>
+      <ModeSelector formContext={formCtx} />
+      <Button type="submit">Inizia la partita</Button>
     </form>
   );
 };

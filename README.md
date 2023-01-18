@@ -9,10 +9,24 @@ You can play at https://ccoffee.netlify.app/
 - [x] fare pace con text-center
 - [x] ottimizzare manualmode in un unico punto di rendering
 - [x] react forms
-- [ ] storico mosse
+- [x] storico mosse
+- [x] macchina a stati
 - [ ] giocatori
-- [ ] macchina a stati
 - [ ] togliere boostrap puro
 - [ ] redux
 - [ ] migliorare about
 - [ ] inserire changelog
+- [ ] componente riga
+
+- destructoring delle props:
+  bad practice farlo nella firma del componente, meglio fare sulla seconda riga, in modo da definire const
+
+- render dei componenti figli se rerender del padre
+
+- useMemo (base)
+- React.memo() (avanzato)
+  export const blabla = React.memo(NomeComponente, (prevProps, nextProps) => return condizionePerCuiNonRerenderizzare)
+
+- ripassare UseCallback
+
+- bulk setState solo da react 18 in poi
