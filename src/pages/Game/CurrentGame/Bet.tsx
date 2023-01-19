@@ -1,16 +1,16 @@
 import { Button } from "react-bootstrap";
 import { useForm, SubmitHandler } from "react-hook-form";
+import { GameRange } from "../../../interfaces/GameRange";
 
 interface IFormInputs {
   betInput: number;
 }
 
 export const Bet = (props: {
-  minBet: number;
-  maxBet: number;
+  range: GameRange;
   callback: (x: number) => void;
 }) => {
-  const { minBet, maxBet, callback } = props;
+  const { range, callback } = props;
 
   // react-hook-form
   const {
@@ -22,12 +22,12 @@ export const Bet = (props: {
   const betInputOptions = {
     required: { value: true, message: "inserire un numero valido" },
     min: {
-      value: Number(minBet) + 1,
-      message: `inserire un numero maggiore di ${minBet}`,
+      value: Number(range.min) + 1,
+      message: `inserire un numero maggiore di ${range.min}`,
     },
     max: {
-      value: Number(maxBet) - 1,
-      message: `inserire un numero minore di ${maxBet}`,
+      value: Number(range.max) - 1,
+      message: `inserire un numero minore di ${range.max}`,
     },
   };
   const onSubmit: SubmitHandler<IFormInputs> = (data: IFormInputs) => {

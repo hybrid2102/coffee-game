@@ -1,10 +1,7 @@
 import Button from "react-bootstrap/Button";
 
-export const EndGame = (props: {
-  secretNumber: number;
-  restartGameCallback: () => void;
-}) => {
-  const { secretNumber, restartGameCallback } = props;
+export const EndGame = (props: { secret: number; callback: () => void }) => {
+  const { secret: secretNumber, callback: restartGameCallback } = props;
 
   return (
     <>

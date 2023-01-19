@@ -1,21 +1,17 @@
 import { useContext, useState } from "react";
 import { UseFormReturn } from "react-hook-form";
 import { GameContext, GameSettings } from "../../../App";
-import { IFormInputs } from "./NewGame";
+import { GameSetup } from "../../../interfaces/GameSetup";
 
-export const ModeSelector = (props: {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  formContext: UseFormReturn<IFormInputs>;
-}) => {
-  const { formContext } = props;
-  const { defaultMin, defaultMax } = useContext<GameSettings>(GameContext);
-
-  const [manualMode, setManualMode] = useState(false);
-
+export const SetSecret = (props: { formContext: UseFormReturn<GameSetup> }) => {
   const {
     register,
     formState: { errors },
-  } = formContext;
+  } = props.formContext;
+
+  const { defaultMin, defaultMax } = useContext<GameSettings>(GameContext);
+
+  const [manualMode, setManualMode] = useState(false);
 
   return (
     <>
@@ -35,7 +31,7 @@ export const ModeSelector = (props: {
         disabled={!manualMode}
         className="form-control my-3"
         placeholder="Imposta il numero segreto..."
-        {...register("secretInput", {
+        {...register("secret", {
           required: { value: true, message: "inserire un numero valido" },
           min: {
             value: defaultMin + 1,
@@ -47,8 +43,8 @@ export const ModeSelector = (props: {
           },
         })}
       />
-      {errors.secretInput && (
-        <p className="alert alert-danger mt-4">{errors.secretInput.message}</p>
+      {errors.secret && (
+        <p className="alert alert-danger mt-4">{errors.secret.message}</p>
       )}
       {!manualMode && (
         <p className="mt-3">

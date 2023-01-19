@@ -1,5 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { GameContext } from "../../../App";
+import { Player } from "../../../interfaces/Player";
+import { GameRange } from "../../../interfaces/GameRange";
 import { Bet } from "./Bet";
 import { GameHistory } from "./GameHistory";
 import { Hint } from "./Hint";
@@ -7,53 +9,63 @@ import { NextRound } from "./NextRound";
 import { RevealSecret } from "./RevealSecret";
 
 export const CurrentGame = (props: {
-  secretNumber: number;
-  endGameCallback: () => void;
+  secret: number;
+  players: Player[];
+  callback: () => void;
 }) => {
-  const { secretNumber, endGameCallback } = props;
+  const { secret, callback, players } = props;
 
   const { defaultMin, defaultMax } = useContext(GameContext);
 
-  const [min, setMin] = useState(defaultMin);
-  const [max, setMax] = useState(defaultMax);
+  const [range, setRange] = useState<GameRange>({
+    min: defaultMin,
+    max: defaultMax,
+  });
   const [bet, setBet] = useState(0);
   const [wink, setWink] = useState(false);
+  const [currentPlayer, setCurrentPlayer] = useState(0);
 
   const setBetCallback = (bet: number) => {
-    if (bet >= min && bet <= max) {
+    if (bet >= range.min && bet <= range.max) {
+      setCurrentPlayer(currentPlayer + 1);
       setBet(bet);
     }
   };
 
   useEffect(() => {
-    if (bet && bet >= min && bet <= max) {
-      if (bet == secretNumber) {
+    if (bet && bet >= range.min && bet <= range.max) {
+      if (bet == secret) {
         // hai perso!
-        endGameCallback();
+        callback();
       } else {
         // sei salvo: aggiorno i limiti per il prossimo turno
-        if (bet < secretNumber) {
-          setMin(bet);
+        if (bet < secret) {
+          setRange({ ...range, min: bet });
         } else {
-          setMax(bet);
+          setRange({ ...range, max: bet });
         }
       }
     }
-  }, [bet, secretNumber]);
+  }, [bet, secret]);
 
   useEffect(() => {
-    if (max - min === 2) {
+    if (range.max - range.min === 2) {
       setWink(true);
     }
-  }, [min, max]);
+  }, [range]);
 
   return (
     <>
-      <NextRound bet={bet} wink={wink} />
-      <Hint minBet={min} maxBet={max} />
-      <Bet minBet={min} maxBet={max} callback={setBetCallback} />
+      <NextRound
+        bet={bet}
+        wink={wink}
+        players={players}
+        currentPlayer={currentPlayer}
+      />
+      <Hint range={range} />
+      <Bet range={range} callback={setBetCallback} />
       <GameHistory bet={bet} />
-      <RevealSecret secretNumber={secretNumber} />
+      <RevealSecret secret={secret} />
     </>
   );
 };
