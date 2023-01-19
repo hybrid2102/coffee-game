@@ -12,7 +12,7 @@ export const GameHistory = (props: { bet: number }) => {
   }, [bet]);
 
   return bet ? (
-    <div className="alert alert-info mt-3" role="alert">
+    <div className="alert alert-secondary mt-3" role="alert">
       {history.map((value, index) => (
         <p key={index}>
           Turno {index + 1}: {value}
