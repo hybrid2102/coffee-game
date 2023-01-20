@@ -13,7 +13,10 @@ export const NewGame = (props: { callback: (data: GameSetup) => void }) => {
   const randomSecret = useRandom(defaultMin, defaultMax);
 
   const formCtx = useForm<GameSetup>({
-    defaultValues: { secret: randomSecret, players: [{ name: "" }] },
+    defaultValues: {
+      secret: randomSecret,
+      players: [{ name: "" }, { name: "" }],
+    },
     criteriaMode: "all",
   });
 

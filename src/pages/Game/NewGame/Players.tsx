@@ -43,7 +43,7 @@ export const Players = (props: { formContext: UseFormReturn<GameSetup> }) => {
                     required: { value: true, message: "inserire un nome" },
                   })}
                 />
-                {index > 0 && (
+                {index > 1 && (
                   <Button onClick={() => remove(index)}>Elimina</Button>
                 )}
               </div>
