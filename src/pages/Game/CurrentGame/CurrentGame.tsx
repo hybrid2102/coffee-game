@@ -23,11 +23,14 @@ export const CurrentGame = (props: {
   });
   const [bet, setBet] = useState(0);
   const [wink, setWink] = useState(false);
-  const [currentPlayer, setCurrentPlayer] = useState(0);
+  const [currentPlayerIndex, setCurrentPlayerIndex] = useState(0);
+  const [currentAndNextPlayers, setCurrentAndNextPlayers] = useState([
+    players[0],
+    players[1],
+  ]);
 
   const setBetCallback = (bet: number) => {
     if (bet >= range.min && bet <= range.max) {
-      setCurrentPlayer(currentPlayer + 1);
       setBet(bet);
     }
   };
@@ -44,6 +47,11 @@ export const CurrentGame = (props: {
         } else {
           setRange({ ...range, max: bet });
         }
+
+        const next =
+          currentPlayerIndex == players.length - 1 ? 0 : currentPlayerIndex + 1;
+        setCurrentAndNextPlayers([players[currentPlayerIndex], players[next]]);
+        setCurrentPlayerIndex(next);
       }
     }
   }, [bet, secret]);
@@ -59,8 +67,8 @@ export const CurrentGame = (props: {
       <NextRound
         bet={bet}
         wink={wink}
-        players={players}
-        currentPlayer={currentPlayer}
+        currentPlayer={currentAndNextPlayers[0]}
+        nextPlayer={currentAndNextPlayers[1]}
       />
       <Hint range={range} />
       <Bet range={range} callback={setBetCallback} />
