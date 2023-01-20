@@ -11,12 +11,14 @@ You can play at https://ccoffee.netlify.app/
 - [x] react forms
 - [x] storico mosse
 - [x] macchina a stati
-- [ ] giocatori
+- [x] giocatori
+- [ ] "<NomeComponente>Props" per le props e "<NomeComponente>State" per l'eventuale state del componente se lo voglio fare in un unico hook
+- [ ] usare formcontext
+- [ ] componente riga fatto in css
 - [ ] togliere boostrap puro
 - [ ] redux
 - [ ] migliorare about
 - [ ] inserire changelog
-- [ ] componente riga
 
 - destructoring delle props:
   bad practice farlo nella firma del componente, meglio fare sulla seconda riga, in modo da definire const
