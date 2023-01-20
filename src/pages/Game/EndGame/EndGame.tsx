@@ -11,13 +11,15 @@ export const EndGame = (props: {
   return (
     <>
       <div className="alert alert-danger" role="alert">
-        Il numero era proprio <strong>{secretNumber}</strong>! 🙃
+        Oh no, il numero era proprio <strong>{secretNumber}</strong>! 🙃
         <br />
         <strong>{loser.name}</strong> ha perso, deve pagare il caffè. ☕
       </div>
-      <Button autoFocus onClick={restartGameCallback}>
-        Ricomincia
-      </Button>
+      <div className="d-grid mt-5">
+        <Button autoFocus onClick={restartGameCallback}>
+          Ricomincia
+        </Button>
+      </div>
     </>
   );
 };

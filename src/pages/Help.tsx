@@ -48,9 +48,11 @@ export const Help = () => {
           perdendo la partita... dovrà quindi offrire il caffè a tutti!
         </li>
       </ul>
-      <Link to="/" className="btn btn-primary btn-lg">
-        Play
-      </Link>
+      <div className="d-grid mt-5">
+        <Link to="/" className="btn btn-primary btn-lg">
+          Play
+        </Link>
+      </div>
     </div>
   );
 };

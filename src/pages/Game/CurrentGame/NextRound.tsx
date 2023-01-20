@@ -17,7 +17,7 @@ export const NextRound = (props: { gameBet: GameBet; range: GameRange }) => {
     </div>
   ) : (
     <div className="alert alert-success" role="alert">
-      Che fortuna <strong>{currentPlayer.name}</strong>: il numero segreto non è{" "}
+      Meno male <strong>{currentPlayer.name}</strong>: il numero segreto non è{" "}
       <strong>{number}</strong>!
       <br />
       <NextPlayer nextPlayer={nextPlayer} />

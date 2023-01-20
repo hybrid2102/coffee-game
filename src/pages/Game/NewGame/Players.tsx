@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 import { useFieldArray, UseFormReturn } from "react-hook-form";
 import { GameSetup } from "../../../interfaces/GameSetup";
@@ -39,7 +38,9 @@ export const Players = (props: { formContext: UseFormReturn<GameSetup> }) => {
                 <input
                   type="text"
                   className="form-control"
-                  placeholder="Inserisci un nome..."
+                  placeholder={
+                    "Inserisci un nome per il giocatore #" + (index + 1)
+                  }
                   {...register(`players.${index}.name` as const, {
                     required: { value: true, message: "inserire un nome" },
                   })}
@@ -55,7 +56,7 @@ export const Players = (props: { formContext: UseFormReturn<GameSetup> }) => {
               )}
             </div>
           ))}
-          <div className="d-grid justify-content-md-start">
+          <div className="d-grid justify-content-md-end">
             <Button className="me-md-2" onClick={() => append({ name: "" })}>
               Aggiungi giocatore
             </Button>

@@ -25,12 +25,15 @@ export const NewGame = (props: { callback: (data: GameSetup) => void }) => {
   };
 
   return (
-    <form onSubmit={formCtx.handleSubmit(onSubmit)}>
-      <SetSecret formContext={formCtx} />
-      <Players formContext={formCtx} />
-      <Button type="submit" className="mt-3">
-        Inizia la partita
-      </Button>
-    </form>
+    <>
+      <h1 className="display-6 fw-bold mb-4">Nuova partita</h1>
+      <form onSubmit={formCtx.handleSubmit(onSubmit)}>
+        <SetSecret formContext={formCtx} />
+        <Players formContext={formCtx} />
+        <div className="d-grid mt-5">
+          <Button type="submit">Inizia la partita</Button>
+        </div>
+      </form>
+    </>
   );
 };

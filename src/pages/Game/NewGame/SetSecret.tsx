@@ -15,14 +15,18 @@ export const SetSecret = (props: { formContext: UseFormReturn<GameSetup> }) => {
 
   return (
     <>
-      <div className="form-check form-switch form-check-inline">
+      <div className="form-check form-switch">
         <input
           className="form-check-input"
           type="checkbox"
           id="flexSwitchCheckReverse"
           onChange={(e) => setManualMode(e.currentTarget.checked)}
         />
-        <label className="form-check-label" htmlFor="flexSwitchCheckReverse">
+        <label
+          className="form-check-label"
+          style={{ textAlign: "left" }}
+          htmlFor="flexSwitchCheckReverse"
+        >
           Modalità manuale
         </label>
       </div>
