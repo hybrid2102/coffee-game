@@ -3,11 +3,11 @@ import "./App.css";
 import { BrowserRouter } from "react-router-dom";
 import { Route, Switch } from "react-router";
 import { Game } from "./pages/Game/Game";
-import { Header } from "./componentse/Header";
+import { Header } from "./rename1/Header";
 import { About } from "./pages/About";
 import { Help } from "./pages/Help";
 import { NotFound } from "./pages/NotFound";
-import { PageLayout } from "./componentse/PageLayout";
+import { PageLayout } from "./rename1/PageLayout";
 
 export interface GameSettings {
   defaultMin: number;

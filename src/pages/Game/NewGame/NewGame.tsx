@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { Button } from "react-bootstrap";
 import { SetSecret } from "./SetSecret";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { useRandom } from "../../../helpers/useRandom";
+import { useRandom } from "../../../rename2/useRandom";
 import { GameContext, GameSettings } from "../../../App";
 import { Players } from "./Players";
 import { GameSetup } from "../../../interfaces/GameSetup";
