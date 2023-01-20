@@ -43,6 +43,7 @@ export const Bet = (props: {
             type="number"
             className="form-control"
             placeholder="Prova a NON indovinare..."
+            autoFocus
             {...register("betInput", betInputOptions)}
           />
         </div>

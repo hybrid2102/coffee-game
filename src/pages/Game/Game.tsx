@@ -4,7 +4,6 @@ import { Player } from "../../interfaces/Player";
 import { CurrentGame } from "./CurrentGame/CurrentGame";
 import { EndGame } from "./EndGame/EndGame";
 import { GameSetup } from "../../interfaces/GameSetup";
-import { stringify } from "querystring";
 
 enum GameStatus {
   New,
@@ -20,7 +19,7 @@ export const Game = () => {
   const startGame = (data: GameSetup) => {
     console.log("Secret number: " + data.secret);
     setSecret(data.secret);
-    setPlayers(data.players);
+    if (data.multiplayerMode) setPlayers(data.players);
     setGameStatus(GameStatus.Current);
   };
 

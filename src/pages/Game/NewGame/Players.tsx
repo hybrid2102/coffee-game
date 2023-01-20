@@ -7,6 +7,7 @@ export const Players = (props: { formContext: UseFormReturn<GameSetup> }) => {
   const {
     control,
     register,
+    watch,
     formState: { errors },
   } = props.formContext;
 
@@ -15,7 +16,7 @@ export const Players = (props: { formContext: UseFormReturn<GameSetup> }) => {
     control,
   });
 
-  const [multiplayerMode, setMultiplayerMode] = useState(false);
+  const multiplayerMode = watch("multiplayerMode");
 
   return (
     <>
@@ -24,7 +25,7 @@ export const Players = (props: { formContext: UseFormReturn<GameSetup> }) => {
           className="form-check-input"
           type="checkbox"
           id="flexSwitchCheckReverse"
-          onChange={(e) => setMultiplayerMode(e.currentTarget.checked)}
+          {...register("multiplayerMode")}
         />
         <label className="form-check-label" htmlFor="flexSwitchCheckReverse">
           Modalità multiplayer

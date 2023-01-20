@@ -1,32 +1,28 @@
-import React, { useEffect, useState } from "react";
-import { Player } from "../../../interfaces/Player";
+import { useEffect, useState } from "react";
+import { GameBet } from "../../../interfaces/GameBet";
 
-export const GameHistory = (props: { bet: number; player: Player }) => {
-  const { bet, player } = props;
-  const [history, setHistory] = useState(Array<number>);
+export const GameHistory = (props: { gameBet: GameBet }) => {
+  const { gameBet } = props;
+  const [history, setHistory] = useState<GameBet[]>([]);
 
-  useEffect(() => {
-    if (bet) {
-      history.push(bet);
-      setHistory(history);
-    }
-  }, [bet]);
+  useEffect(() => setHistory(history.concat(gameBet)), [gameBet]);
 
-  const now = new Date();
-  const time = `(${now.getHours()}:${now.getMinutes()}:${now.getSeconds()})`;
+  let time: string;
+  if (gameBet.number) {
+    const now = gameBet?.date;
+    time = `${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`;
+  }
 
-  return bet ? (
+  return (
     <div className="alert alert-secondary mt-3" role="alert">
       <ol>
         {history.map((value, index) => (
           <li style={{ textAlign: "left" }} key={index}>
-            {time} <strong>{player.name}</strong> scommette{" "}
-            <strong>{value}</strong>
+            {time} - <strong>{value.currentPlayer.name}</strong> scommette{" "}
+            <strong>{value.number}</strong>
           </li>
         ))}
       </ol>
     </div>
-  ) : (
-    <></>
   );
 };
