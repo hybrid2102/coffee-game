@@ -12,7 +12,7 @@ import { GameBet } from "../../../interfaces/GameBet";
 export const CurrentGame = (props: {
   secret: number;
   players: Player[];
-  callback: () => void;
+  callback: (loser: Player) => void;
 }) => {
   const { secret, callback, players } = props;
 
@@ -33,7 +33,8 @@ export const CurrentGame = (props: {
     if (Number(bet) >= Number(range.min) && Number(bet) <= Number(range.max)) {
       if (bet == secret) {
         // hai perso!
-        callback();
+        const loser = players[currentPlayerIndex];
+        callback(loser);
       } else {
         // sei salvo: aggiorno i limiti per il prossimo turno
         if (Number(bet) < Number(secret)) {

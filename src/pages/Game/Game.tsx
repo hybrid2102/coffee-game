@@ -15,6 +15,7 @@ export const Game = () => {
   const [gameStatus, setGameStatus] = useState(GameStatus.New);
   const [secret, setSecret] = useState(0);
   const [players, setPlayers] = useState<Player[]>([{ name: "Player One" }]);
+  const [loser, setLoser] = useState<Player>(players[0]);
 
   const startGame = (data: GameSetup) => {
     console.log("Secret number: " + data.secret);
@@ -23,7 +24,8 @@ export const Game = () => {
     setGameStatus(GameStatus.Current);
   };
 
-  const endGame = () => {
+  const endGame = (loser: Player) => {
+    setLoser(loser);
     setGameStatus(GameStatus.End);
   };
 
@@ -38,7 +40,7 @@ export const Game = () => {
       );
 
     case GameStatus.End:
-      return <EndGame secret={secret} callback={restartGame} />;
+      return <EndGame secret={secret} loser={loser} callback={restartGame} />;
 
     case GameStatus.New:
     default:
