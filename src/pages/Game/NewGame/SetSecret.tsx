@@ -30,23 +30,24 @@ export const SetSecret = (props: { formContext: UseFormReturn<GameSetup> }) => {
           Modalità manuale
         </label>
       </div>
-      <input
-        type={manualMode ? "number" : "hidden"}
-        disabled={!manualMode}
-        className="form-control my-3"
-        placeholder="Imposta il numero segreto..."
-        {...register("secret", {
-          required: { value: true, message: "inserire un numero valido" },
-          min: {
-            value: defaultMin + 1,
-            message: `inserire un numero maggiore di ${defaultMin}`,
-          },
-          max: {
-            value: defaultMax - 1,
-            message: `inserire un numero minore di ${defaultMax}`,
-          },
-        })}
-      />
+      {manualMode && (
+        <input
+          type="number"
+          className="form-control my-3"
+          placeholder="Imposta il numero segreto..."
+          {...register("secret", {
+            required: { value: true, message: "inserire un numero valido" },
+            min: {
+              value: defaultMin + 1,
+              message: `inserire un numero maggiore di ${defaultMin}`,
+            },
+            max: {
+              value: defaultMax - 1,
+              message: `inserire un numero minore di ${defaultMax}`,
+            },
+          })}
+        />
+      )}
       {errors.secret && (
         <p className="alert alert-danger mt-4">{errors.secret.message}</p>
       )}
