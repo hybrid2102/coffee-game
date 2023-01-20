@@ -72,7 +72,7 @@ export const CurrentGame = (props: {
       />
       <Hint range={range} />
       <Bet range={range} callback={setBetCallback} />
-      <GameHistory bet={bet} />
+      <GameHistory bet={bet} player={currentAndNextPlayers[0]} />
       <RevealSecret secret={secret} />
     </>
   );
