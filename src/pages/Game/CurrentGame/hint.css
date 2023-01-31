@@ -1,0 +1,20 @@
+:root {
+    --min: 50%;
+    --max: 10%;
+  }
+  
+  .container > div {
+    height: 10px;
+  }
+  
+  .left {
+    background-color: black;
+  }
+  
+  .center {
+    background-color: red;
+  }
+  
+  .right {
+    background-color: black;
+  }
