@@ -16,7 +16,7 @@ export const CurrentGame = (props: {
 }) => {
   const { secret, callback, players } = props;
 
-  const { defaultMin, defaultMax } = useContext(GameContext);
+  const { defaultRange } = useContext(GameContext);
 
   const [gameBet, setGameBet] = useState<GameBet>({
     number: 0,
@@ -24,8 +24,8 @@ export const CurrentGame = (props: {
     currentPlayer: players[0],
   });
   const [range, setRange] = useState<GameRange>({
-    min: defaultMin,
-    max: defaultMax,
+    min: defaultRange.min,
+    max: defaultRange.max,
   });
   const [currentPlayerIndex, setCurrentPlayerIndex] = useState(0);
 

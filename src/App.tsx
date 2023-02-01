@@ -8,15 +8,14 @@ import { About } from "./pages/About";
 import { Help } from "./pages/Help";
 import { NotFound } from "./pages/NotFound";
 import { PageLayout } from "./components/PageLayout";
+import { GameRange } from "./interfaces/GameRange";
 
 export interface GameSettings {
-  defaultMin: number;
-  defaultMax: number;
+  defaultRange: GameRange;
 }
 
 const gameContext: GameSettings = {
-  defaultMin: 1,
-  defaultMax: 1000,
+  defaultRange: { min: 1, max: 1000 },
 };
 
 export const GameContext = React.createContext<GameSettings>(gameContext);
