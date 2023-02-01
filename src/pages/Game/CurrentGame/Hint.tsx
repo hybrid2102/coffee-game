@@ -10,12 +10,12 @@ export const Hint = (props: { range: GameRange }) => {
   const rightPc = 100 - (range.max * 100) / defaultRange.max;
 
   const guessRange = 100 - rightPc - leftPc;
-  let rangeTemp = "center-cold";
+  let rangeTemp = "cold";
   if (guessRange < 50) {
-    rangeTemp = "center-warm";
+    rangeTemp = "warm";
   }
   if (guessRange < 25) {
-    rangeTemp = "center-hot";
+    rangeTemp = "hot";
   }
 
   const gridColumnsValue = `${leftPc}% 1fr ${rightPc}%`;
@@ -27,15 +27,19 @@ export const Hint = (props: { range: GameRange }) => {
         <strong> {range.max}</strong> (esclusi)
       </div>
       <div
-        className="container mb-3"
+        className="mb-3"
         style={{
           display: "grid",
           gridTemplateColumns: gridColumnsValue,
         }}
       >
-        <div className="left"></div>
-        <div className={rangeTemp}></div>
-        <div className="right"></div>
+        <span className={`bet-min ${rangeTemp}`}>{range.min}</span>
+        <span className={`bet-max ${rangeTemp}`}>{range.max}</span>
+        <div className="range left"></div>
+        <div className={`range center ${rangeTemp}`}></div>
+        <div className="range right"></div>
+        <span className="default-min">{defaultRange.min}</span>
+        <span className="default-max">{defaultRange.max}</span>
       </div>
     </>
   );
