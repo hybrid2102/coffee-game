@@ -9,8 +9,10 @@ import { GameSetup } from "../../../interfaces/GameSetup";
 
 export const NewGame = (props: { callback: (data: GameSetup) => void }) => {
   const { callback: startGameCallback } = props;
-  const { defaultMin, defaultMax } = useContext<GameSettings>(GameContext);
-  const randomSecret = useRandom(defaultMin, defaultMax);
+  const {
+    defaultRange: { min, max },
+  } = useContext<GameSettings>(GameContext);
+  const randomSecret = useRandom(min, max);
 
   const formCtx = useForm<GameSetup>({
     defaultValues: {

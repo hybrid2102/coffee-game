@@ -9,7 +9,7 @@ export const SetSecret = (props: { formContext: UseFormReturn<GameSetup> }) => {
     formState: { errors },
   } = props.formContext;
 
-  const { defaultMin, defaultMax } = useContext<GameSettings>(GameContext);
+  const { defaultRange } = useContext<GameSettings>(GameContext);
 
   const [manualMode, setManualMode] = useState(false);
 
@@ -38,12 +38,12 @@ export const SetSecret = (props: { formContext: UseFormReturn<GameSetup> }) => {
           {...register("secret", {
             required: { value: true, message: "inserire un numero valido" },
             min: {
-              value: defaultMin + 1,
-              message: `inserire un numero maggiore di ${defaultMin}`,
+              value: defaultRange.min + 1,
+              message: `inserire un numero maggiore di ${defaultRange.min}`,
             },
             max: {
-              value: defaultMax - 1,
-              message: `inserire un numero minore di ${defaultMax}`,
+              value: defaultRange.max - 1,
+              message: `inserire un numero minore di ${defaultRange.max}`,
             },
           })}
         />

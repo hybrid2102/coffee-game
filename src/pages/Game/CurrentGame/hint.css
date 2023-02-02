@@ -1,0 +1,80 @@
+:root {
+  --cold: green;
+  --warm: orange;
+  --hot: red;
+}
+
+[class^="bet"] {
+  grid-row: 1;
+}
+
+.bet-min {
+  grid-column: 1;
+  text-align: right;
+}
+
+.bet-max {
+  grid-column: 3;
+  text-align: left;
+}
+
+.range {
+  grid-row: 2;
+  height: 10px;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.left {
+  grid-column: 1 / 2;
+  background-color: black;
+}
+
+.center {
+  grid-column: 2 / 3;
+  height: 20px;
+}
+
+.right {
+  grid-column: 3;
+  background-color: black;
+}
+
+[class^="default"] {
+  grid-row: 3;
+  font-weight: bold;
+}
+
+.default-min {
+  grid-column: 1 / 2;
+  text-align: left;
+}
+
+.default-max {
+  grid-column: 2 / span 3;
+  text-align: right;
+}
+
+div.cold {
+  background-color: var(--cold);
+}
+
+div.warm {
+  background-color: var(--warm);
+}
+
+div.hot {
+  background-color: var(--hot);
+}
+
+span.cold {
+  color: var(--cold);
+}
+
+span.warm {
+  color: var(--warm);
+}
+
+span.hot {
+  color: var(--hot);
+}
