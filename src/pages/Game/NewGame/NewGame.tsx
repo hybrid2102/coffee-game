@@ -1,9 +1,9 @@
-import { useContext } from "react";
+import { useSelector } from "react-redux";
+import { selectSettings } from "../../../redux/slices/settingsSlice";
 import { Button } from "react-bootstrap";
 import { SetSecret } from "./SetSecret";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useRandom } from "../../../helpers/useRandom";
-import { GameContext, GameSettings } from "../../../App";
 import { Players } from "./Players";
 import { GameSetup } from "../../../interfaces/GameSetup";
 
@@ -11,7 +11,7 @@ export const NewGame = (props: { callback: (data: GameSetup) => void }) => {
   const { callback: startGameCallback } = props;
   const {
     defaultRange: { min, max },
-  } = useContext<GameSettings>(GameContext);
+  } = useSelector(selectSettings);
   const randomSecret = useRandom(min, max);
 
   const formCtx = useForm<GameSetup>({

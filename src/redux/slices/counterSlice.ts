@@ -1,3 +1,4 @@
+// TODO: eliminare questo Slice che serve solo come esempio
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import type { RootState } from "../store";
 

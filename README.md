@@ -13,10 +13,10 @@ You can play at https://ccoffee.netlify.app/
 - [x] macchina a stati
 - [x] giocatori
 - [ ] "<NomeComponente>Props" per le props e "<NomeComponente>State" per l'eventuale state del componente se lo voglio fare in un unico hook
-- [ ] usare formcontext
-- [ ] componente riga fatto in css
+- [x] usare formcontext
+- [x] componente riga fatto in css
 - [ ] togliere boostrap puro
-- [ ] redux
+- [x] redux
 - [ ] migliorare about
 - [ ] inserire changelog
 

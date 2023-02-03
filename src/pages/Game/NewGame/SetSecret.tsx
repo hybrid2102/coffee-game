@@ -1,7 +1,8 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { UseFormReturn } from "react-hook-form";
-import { GameContext, GameSettings } from "../../../App";
+import { useSelector } from "react-redux";
 import { GameSetup } from "../../../interfaces/GameSetup";
+import { selectSettings } from "../../../redux/slices/settingsSlice";
 
 export const SetSecret = (props: { formContext: UseFormReturn<GameSetup> }) => {
   const {
@@ -9,7 +10,7 @@ export const SetSecret = (props: { formContext: UseFormReturn<GameSetup> }) => {
     formState: { errors },
   } = props.formContext;
 
-  const { defaultRange } = useContext<GameSettings>(GameContext);
+  const { defaultRange } = useSelector(selectSettings);
 
   const [manualMode, setManualMode] = useState(false);
 

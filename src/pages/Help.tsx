@@ -1,15 +1,11 @@
-import React from "react";
-import { useContext } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { GameContext } from "../App";
-import { selectCount } from "../redux/slices/counterSlice";
+import { selectSettings } from "../redux/slices/settingsSlice";
 
 export const Help = () => {
   const {
     defaultRange: { min, max },
-  } = useContext(GameContext);
-  const valore = useSelector(selectCount);
+  } = useSelector(selectSettings);
 
   return (
     <div>

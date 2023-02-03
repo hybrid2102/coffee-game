@@ -1,10 +1,10 @@
-import { useContext } from "react";
-import { GameContext } from "../../../App";
+import { useSelector } from "react-redux";
 import { GameRange } from "../../../interfaces/GameRange";
+import { selectSettings } from "../../../redux/slices/settingsSlice";
 import "./hint.css";
 export const Hint = (props: { range: GameRange }) => {
   const { range } = props;
-  const { defaultRange } = useContext(GameContext);
+  const { defaultRange } = useSelector(selectSettings);
 
   const leftPc = (range.min * 100) / defaultRange.max;
   const rightPc = 100 - (range.max * 100) / defaultRange.max;

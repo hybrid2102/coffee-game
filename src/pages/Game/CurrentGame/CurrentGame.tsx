@@ -1,5 +1,4 @@
-import { useContext, useState } from "react";
-import { GameContext } from "../../../App";
+import { useState } from "react";
 import { Player } from "../../../interfaces/Player";
 import { GameRange } from "../../../interfaces/GameRange";
 import { Bet } from "./Bet";
@@ -8,6 +7,8 @@ import { Hint } from "./Hint";
 import { NextRound } from "./NextRound";
 import { RevealSecret } from "./RevealSecret";
 import { GameBet } from "../../../interfaces/GameBet";
+import { useSelector } from "react-redux";
+import { selectSettings } from "../../../redux/slices/settingsSlice";
 
 export const CurrentGame = (props: {
   secret: number;
@@ -16,7 +17,7 @@ export const CurrentGame = (props: {
 }) => {
   const { secret, callback, players } = props;
 
-  const { defaultRange } = useContext(GameContext);
+  const { defaultRange } = useSelector(selectSettings);
 
   const [gameBet, setGameBet] = useState<GameBet>({
     number: 0,
