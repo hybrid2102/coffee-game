@@ -1,11 +1,13 @@
 import Button from "react-bootstrap/Button";
 import { Player } from "../../../interfaces/Player";
 
-export const EndGame = (props: {
+interface EndGameProps {
   secret: number;
   loser: Player;
   callback: () => void;
-}) => {
+}
+
+export const EndGame: React.FC<EndGameProps> = (props: EndGameProps) => {
   const { secret: secretNumber, loser, callback: restartGameCallback } = props;
 
   return (

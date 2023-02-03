@@ -1,6 +1,12 @@
 import Button from "react-bootstrap/Button";
 
-export const RevealSecret = (props: { secret: number }) => {
+interface RevealSecretProps {
+  secret: number;
+}
+
+export const RevealSecret: React.FC<RevealSecretProps> = (
+  props: RevealSecretProps
+) => {
   const { secret } = props;
   const mostraNumero = () => {
     const confirmed = window.confirm(

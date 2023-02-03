@@ -7,8 +7,12 @@ import { useRandom } from "../../../helpers/useRandom";
 import { Players } from "./Players";
 import { GameSetup } from "../../../interfaces/GameSetup";
 
-export const NewGame = (props: { callback: (data: GameSetup) => void }) => {
-  const { callback: startGameCallback } = props;
+interface NewGameProps {
+  callback: (data: GameSetup) => void;
+}
+
+export const NewGame: React.FC<NewGameProps> = (props: NewGameProps) => {
+  const { callback } = props;
   const {
     defaultRange: { min, max },
   } = useSelector(selectSettings);
@@ -23,7 +27,7 @@ export const NewGame = (props: { callback: (data: GameSetup) => void }) => {
   });
 
   const onSubmit: SubmitHandler<GameSetup> = (data: GameSetup) => {
-    startGameCallback(data);
+    callback(data);
   };
 
   return (

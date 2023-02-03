@@ -2,7 +2,11 @@ import { Button } from "react-bootstrap";
 import { useFieldArray, UseFormReturn } from "react-hook-form";
 import { GameSetup } from "../../../interfaces/GameSetup";
 
-export const Players = (props: { formContext: UseFormReturn<GameSetup> }) => {
+interface PlayersProps {
+  formContext: UseFormReturn<GameSetup>;
+}
+
+export const Players: React.FC<PlayersProps> = (props: PlayersProps) => {
   const {
     control,
     register,

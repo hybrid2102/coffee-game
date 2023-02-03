@@ -10,11 +10,15 @@ import { GameBet } from "../../../interfaces/GameBet";
 import { useSelector } from "react-redux";
 import { selectSettings } from "../../../redux/slices/settingsSlice";
 
-export const CurrentGame = (props: {
+interface CurrentGameProps {
   secret: number;
   players: Player[];
   callback: (loser: Player) => void;
-}) => {
+}
+
+export const CurrentGame: React.FC<CurrentGameProps> = (
+  props: CurrentGameProps
+) => {
   const { secret, callback, players } = props;
 
   const { defaultRange } = useSelector(selectSettings);

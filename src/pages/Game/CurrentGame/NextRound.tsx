@@ -2,7 +2,12 @@ import { GameBet } from "../../../interfaces/GameBet";
 import { GameRange } from "../../../interfaces/GameRange";
 import { NextPlayer } from "./NextPlayer";
 
-export const NextRound = (props: { gameBet: GameBet; range: GameRange }) => {
+interface NextRountProps {
+  gameBet: GameBet;
+  range: GameRange;
+}
+
+export const NextRound: React.FC<NextRountProps> = (props: NextRountProps) => {
   const {
     gameBet: { number, currentPlayer, nextPlayer },
     range,

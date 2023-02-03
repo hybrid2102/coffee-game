@@ -2,7 +2,11 @@ import { useSelector } from "react-redux";
 import { GameRange } from "../../../interfaces/GameRange";
 import { selectSettings } from "../../../redux/slices/settingsSlice";
 import "./hint.css";
-export const Hint = (props: { range: GameRange }) => {
+interface HintProps {
+  range: GameRange;
+}
+
+export const Hint: React.FC<HintProps> = (props: HintProps) => {
   const { range } = props;
   const { defaultRange } = useSelector(selectSettings);
 

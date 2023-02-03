@@ -2,14 +2,16 @@ import { Button } from "react-bootstrap";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { GameRange } from "../../../interfaces/GameRange";
 
+interface BetProps {
+  range: GameRange;
+  callback: (x: number) => void;
+}
+
 interface IFormInputs {
   betInput: number;
 }
 
-export const Bet = (props: {
-  range: GameRange;
-  callback: (x: number) => void;
-}) => {
+export const Bet: React.FC<BetProps> = (props: BetProps) => {
   const { range, callback } = props;
 
   // react-hook-form

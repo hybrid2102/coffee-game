@@ -4,7 +4,11 @@ import { useSelector } from "react-redux";
 import { GameSetup } from "../../../interfaces/GameSetup";
 import { selectSettings } from "../../../redux/slices/settingsSlice";
 
-export const SetSecret = (props: { formContext: UseFormReturn<GameSetup> }) => {
+interface SetSecretProps {
+  formContext: UseFormReturn<GameSetup>;
+}
+
+export const SetSecret: React.FC<SetSecretProps> = (props: SetSecretProps) => {
   const {
     register,
     formState: { errors },
