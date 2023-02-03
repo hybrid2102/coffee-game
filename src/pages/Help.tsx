@@ -1,12 +1,16 @@
 import React from "react";
 import { useContext } from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { GameContext } from "../App";
+import { selectCount } from "../redux/slices/counterSlice";
 
 export const Help = () => {
   const {
     defaultRange: { min, max },
   } = useContext(GameContext);
+  const valore = useSelector(selectCount);
+
   return (
     <div>
       <h1 className="display-6 fw-bold">Scopo del gioco</h1>

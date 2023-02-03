@@ -10,6 +10,9 @@ import { NotFound } from "./pages/NotFound";
 import { PageLayout } from "./components/PageLayout";
 import { GameRange } from "./interfaces/GameRange";
 
+import { Provider } from "react-redux";
+
+import { store } from "./redux/store";
 export interface GameSettings {
   defaultRange: GameRange;
 }
@@ -24,16 +27,18 @@ function App() {
   return (
     <BrowserRouter>
       <Header />
-      <GameContext.Provider value={gameContext}>
-        <PageLayout>
-          <Switch>
-            <Route path="/" exact component={Game} />
-            <Route path="/help" component={Help} />
-            <Route path="/about" component={About} />
-            <Route path="*" component={NotFound} />
-          </Switch>
-        </PageLayout>
-      </GameContext.Provider>
+      <Provider store={store}>
+        <GameContext.Provider value={gameContext}>
+          <PageLayout>
+            <Switch>
+              <Route path="/" exact component={Game} />
+              <Route path="/help" component={Help} />
+              <Route path="/about" component={About} />
+              <Route path="*" component={NotFound} />
+            </Switch>
+          </PageLayout>
+        </GameContext.Provider>
+      </Provider>
     </BrowserRouter>
   );
 }
