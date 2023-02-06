@@ -2,7 +2,7 @@ import React from "react";
 import "./App.css";
 import { BrowserRouter } from "react-router-dom";
 import { Route, Switch } from "react-router";
-import { Game } from "./pages/Game/Game";
+import { Game } from "./pages/Game";
 import { Header } from "./components/Header";
 import { About } from "./pages/About";
 import { Help } from "./pages/Help";
