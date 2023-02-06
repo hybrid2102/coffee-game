@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { GameRange } from "../../../interfaces/GameRange";
-import { selectSettings } from "../../../redux/slices/settingsSlice";
+import { selectSettings } from "../settingsSlice";
 import "./hint.css";
 interface HintProps {
   range: GameRange;

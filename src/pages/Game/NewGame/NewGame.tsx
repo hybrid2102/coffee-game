@@ -1,33 +1,30 @@
-import { useSelector } from "react-redux";
-import { selectSettings } from "../../../redux/slices/settingsSlice";
 import { Button } from "react-bootstrap";
 import { SetSecret } from "./SetSecret";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useRandom } from "../../../helpers/useRandom";
 import { Players } from "./Players";
 import { GameSetup } from "../../../interfaces/GameSetup";
+import { useAppDispatch, useAppSelector } from "../../../app/hooks";
+import { selectSettings } from "../settingsSlice";
+import { startGame } from "../gameSlice";
 
-interface NewGameProps {
-  callback: (data: GameSetup) => void;
-}
-
-export const NewGame: React.FC<NewGameProps> = (props: NewGameProps) => {
-  const { callback } = props;
+export const NewGame: React.FC = () => {
+  const dispatch = useAppDispatch();
   const {
     defaultRange: { min, max },
-  } = useSelector(selectSettings);
-  const randomSecret = useRandom(min, max);
+  } = useAppSelector(selectSettings);
 
   const formCtx = useForm<GameSetup>({
     defaultValues: {
-      secret: randomSecret,
-      players: [{ name: "" }, { name: "" }],
+      secret: useRandom(min, max),
+      multiplayerMode: false,
+      players: [{ name: "Player 1" }, { name: "Player 2" }],
     },
     criteriaMode: "all",
   });
 
   const onSubmit: SubmitHandler<GameSetup> = (data: GameSetup) => {
-    callback(data);
+    dispatch(startGame(data));
   };
 
   return (

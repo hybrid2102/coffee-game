@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { selectSettings } from "../redux/slices/settingsSlice";
+import { selectSettings } from "./Game/settingsSlice";
 
 export const Help = () => {
   const {

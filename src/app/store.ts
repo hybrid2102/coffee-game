@@ -1,11 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
-import counterReducer from "./slices/counterSlice";
-import settingsReducer from "./slices/settingsSlice";
+import settingsReducer from "../pages/Game/settingsSlice";
+import gameReducer from "../pages/Game/gameSlice";
 
 export const store = configureStore({
   reducer: {
-    counter: counterReducer,
     settings: settingsReducer,
+    game: gameReducer,
   },
 });
 

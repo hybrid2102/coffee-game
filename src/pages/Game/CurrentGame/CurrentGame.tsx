@@ -8,7 +8,7 @@ import { NextRound } from "./NextRound";
 import { RevealSecret } from "./RevealSecret";
 import { GameBet } from "../../../interfaces/GameBet";
 import { useSelector } from "react-redux";
-import { selectSettings } from "../../../redux/slices/settingsSlice";
+import { selectSettings } from "../settingsSlice";
 
 interface CurrentGameProps {
   secret: number;

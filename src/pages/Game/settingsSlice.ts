@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { GameSettings } from "../../interfaces/GameSettings";
-import type { RootState } from "../store";
+import type { RootState } from "../../app/store";
 
 // Define a type for the slice state
 interface SettingsState {
