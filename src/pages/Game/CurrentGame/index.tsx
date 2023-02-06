@@ -7,21 +7,15 @@ import { Hint } from "./Hint";
 import { NextRound } from "./NextRound";
 import { RevealSecret } from "./RevealSecret";
 import { GameBet } from "../../../interfaces/GameBet";
-import { useSelector } from "react-redux";
 import { selectSettings } from "../settingsSlice";
+import { useAppDispatch, useAppSelector } from "../../../app/hooks";
+import { endGame, selectPlayers, selectSecret } from "../gameSlice";
 
-interface CurrentGameProps {
-  secret: number;
-  players: Player[];
-  callback: (loser: Player) => void;
-}
-
-export const CurrentGame: React.FC<CurrentGameProps> = (
-  props: CurrentGameProps
-) => {
-  const { secret, callback, players } = props;
-
-  const { defaultRange } = useSelector(selectSettings);
+export const CurrentGame: React.FC = () => {
+  const { defaultRange } = useAppSelector(selectSettings);
+  const players = useAppSelector(selectPlayers);
+  const secret = useAppSelector(selectSecret);
+  const dispatch = useAppDispatch();
 
   const [gameBet, setGameBet] = useState<GameBet>({
     number: 0,
@@ -39,7 +33,7 @@ export const CurrentGame: React.FC<CurrentGameProps> = (
       if (bet == secret) {
         // hai perso!
         const loser = players[currentPlayerIndex];
-        callback(loser);
+        dispatch(endGame(loser));
       } else {
         // sei salvo: aggiorno i limiti per il prossimo turno
         if (Number(bet) < Number(secret)) {

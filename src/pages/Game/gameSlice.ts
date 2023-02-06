@@ -7,6 +7,7 @@ import { Player } from "../../interfaces/Player";
 interface GameState {
   status: "new" | "ongoing" | "end";
   setup: GameSetup;
+  loser?: Player;
 }
 
 // Define the initial state using that type
@@ -32,13 +33,21 @@ export const gameSlice = createSlice({
         players: action.payload.players,
       };
     },
+    endGame: (state, action: PayloadAction<Player>) => {
+      state.status = "end";
+      state.loser = action.payload;
+    },
+    restartGame: (state) => {
+      state.status = "new";
+    },
   },
 });
 
-export const { startGame } = gameSlice.actions;
+export const { startGame, endGame, restartGame } = gameSlice.actions;
 
 export const selectStatus = (state: RootState) => state.game.status;
 export const selectSecret = (state: RootState) => state.game.setup.secret;
 export const selectPlayers = (state: RootState) => state.game.setup.players;
+export const selectLoser = (state: RootState) => state.game.loser;
 
 export default gameSlice.reducer;
