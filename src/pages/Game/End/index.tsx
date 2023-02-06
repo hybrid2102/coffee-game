@@ -2,7 +2,7 @@ import Button from "react-bootstrap/Button";
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 import { restartGame, selectLoser, selectSecret } from "../gameSlice";
 
-export const EndGame: React.FC = () => {
+export const End: React.FC = () => {
   const secret = useAppSelector(selectSecret);
   const loser = useAppSelector(selectLoser);
   const dispatch = useAppDispatch();

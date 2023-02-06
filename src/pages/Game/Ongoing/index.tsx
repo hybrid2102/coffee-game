@@ -11,7 +11,7 @@ import { selectSettings } from "../settingsSlice";
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 import { endGame, selectPlayers, selectSecret } from "../gameSlice";
 
-export const CurrentGame: React.FC = () => {
+export const Ongoing: React.FC = () => {
   const { defaultRange } = useAppSelector(selectSettings);
   const players = useAppSelector(selectPlayers);
   const secret = useAppSelector(selectSecret);

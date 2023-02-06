@@ -8,7 +8,7 @@ import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 import { selectSettings } from "../settingsSlice";
 import { startGame } from "../gameSlice";
 
-export const NewGame: React.FC = () => {
+export const New: React.FC = () => {
   const dispatch = useAppDispatch();
   const {
     defaultRange: { min, max },

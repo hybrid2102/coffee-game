@@ -1,14 +1,14 @@
-import { NewGame } from "./NewGame";
-import { CurrentGame } from "./CurrentGame";
-import { EndGame } from "./EndGame";
+import { New } from "./New";
+import { Ongoing } from "./Ongoing";
+import { End } from "./End";
 import { useAppSelector } from "../../app/hooks";
 import { selectStatus } from "./gameSlice";
 
 export const Game = () => {
   const gameStatusComponents = {
-    new: <NewGame />,
-    ongoing: <CurrentGame />,
-    end: <EndGame />,
+    new: <New />,
+    ongoing: <Ongoing />,
+    end: <End />,
   };
 
   const gameStatus = useAppSelector(selectStatus);
