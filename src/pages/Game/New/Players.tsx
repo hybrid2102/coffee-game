@@ -2,6 +2,7 @@ import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button } from "react-bootstrap";
 import { useFieldArray, UseFormReturn } from "react-hook-form";
+import { useNickName } from "../../../helpers/useNickname";
 import { GameSetup } from "../../../interfaces/GameSetup";
 
 interface PlayersProps {
@@ -13,13 +14,18 @@ export const Players: React.FC<PlayersProps> = (props: PlayersProps) => {
     control,
     register,
     watch,
+    setValue,
     formState: { errors },
   } = props.formContext;
-
   const { fields, append, remove } = useFieldArray({
     name: "players",
     control,
   });
+
+  const nicks = useNickName(10);
+  for (let i = 0; i < fields.length; i++) {
+    setValue(`players.${i}.nick`, nicks[i]);
+  }
 
   const multiplayerMode = watch("multiplayerMode");
 
@@ -53,7 +59,6 @@ export const Players: React.FC<PlayersProps> = (props: PlayersProps) => {
                   type="text"
                   disabled
                   className="form-control"
-                  placeholder='AKA "Papero giallo"'
                   {...register(`players.${index}.nick` as const)}
                 />
                 <Button
