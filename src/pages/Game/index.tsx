@@ -1,8 +1,9 @@
 import { New } from "./New";
 import { Ongoing } from "./Ongoing";
 import { End } from "./End";
-import { useAppSelector } from "../../app/hooks";
-import { selectStatus } from "./gameSlice";
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import { restartGame, selectStatus } from "./gameSlice";
+import { useEffect } from "react";
 
 export const Game = () => {
   const gameStatusComponents = {
@@ -12,6 +13,13 @@ export const Game = () => {
   };
 
   const gameStatus = useAppSelector(selectStatus);
+
+  // const dispatch = useAppDispatch();
+  // useEffect(() => {
+  //   if (gameStatus == "ongoing") {
+  //     dispatch(restartGame);
+  //   }
+  // }, []);
 
   return gameStatusComponents[gameStatus];
 };

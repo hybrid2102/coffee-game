@@ -32,3 +32,7 @@ You can play at https://ccoffee.netlify.app/
 - ripassare UseCallback
 
 - bulk setState solo da react 18 in poi
+
+- API KEY: 05f39093c75f41a4b57654df668017ee
+  https://randommer.io/Identity/Account/Manage/ApiKey
+  https://randommer.io/Name
