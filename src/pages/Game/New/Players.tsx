@@ -1,3 +1,5 @@
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button } from "react-bootstrap";
 import { useFieldArray, UseFormReturn } from "react-hook-form";
 import { GameSetup } from "../../../interfaces/GameSetup";
@@ -42,16 +44,25 @@ export const Players: React.FC<PlayersProps> = (props: PlayersProps) => {
                 <input
                   type="text"
                   className="form-control"
-                  placeholder={
-                    "Inserisci un nome per il giocatore #" + (index + 1)
-                  }
+                  placeholder={"Nome per il giocatore #" + (index + 1)}
                   {...register(`players.${index}.name` as const, {
                     required: { value: true, message: "inserire un nome" },
                   })}
                 />
-                {index > 1 && (
-                  <Button onClick={() => remove(index)}>Elimina</Button>
-                )}
+                <input
+                  type="text"
+                  disabled
+                  className="form-control"
+                  placeholder='AKA "Papero giallo"'
+                  {...register(`players.${index}.nick` as const)}
+                />
+                <Button
+                  className="btn-danger"
+                  disabled={index < 2}
+                  onClick={() => remove(index)}
+                >
+                  <FontAwesomeIcon icon={faTrash} />
+                </Button>
               </div>
               {errors?.players?.[index]?.["name"] && (
                 <p className="alert alert-danger mt-4">
