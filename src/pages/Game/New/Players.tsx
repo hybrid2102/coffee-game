@@ -1,9 +1,12 @@
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import { useFieldArray, UseFormReturn } from "react-hook-form";
+import { useAppSelector } from "../../../app/hooks";
 import { useNickName } from "../../../helpers/useNickname";
 import { GameSetup } from "../../../interfaces/GameSetup";
+import { selectSettings } from "../settingsSlice";
 
 interface PlayersProps {
   formContext: UseFormReturn<GameSetup>;
@@ -22,12 +25,27 @@ export const Players: React.FC<PlayersProps> = (props: PlayersProps) => {
     control,
   });
 
-  const nicks = useNickName(10);
-  for (let i = 0; i < fields.length; i++) {
-    setValue(`players.${i}.nick`, nicks[i]);
-  }
-
   const multiplayerMode = watch("multiplayerMode");
+
+  const { initialNicksCount } = useAppSelector(selectSettings);
+  const [nicks, setNicknames] = useState(useNickName(initialNicksCount));
+
+  const addPlayer = () => {
+    let nicksForAdd = nicks.slice();
+    if (fields.length == nicksForAdd.length) {
+      const newNicks = useNickName(initialNicksCount);
+      nicksForAdd = nicks.concat(newNicks);
+      setNicknames(nicksForAdd);
+    }
+    const nextNick = nicksForAdd[fields.length];
+    append({ name: "", nick: nextNick });
+  };
+
+  useEffect(() => {
+    for (let i = 0; i < fields.length; i++) {
+      setValue(`players.${i}.nick`, nicks[i]);
+    }
+  }, [setValue, nicks]);
 
   return (
     <>
@@ -50,7 +68,7 @@ export const Players: React.FC<PlayersProps> = (props: PlayersProps) => {
                 <input
                   type="text"
                   className="form-control"
-                  placeholder={"Nome per il giocatore #" + (index + 1)}
+                  placeholder={"Nome del giocatore #" + (index + 1)}
                   {...register(`players.${index}.name` as const, {
                     required: { value: true, message: "inserire un nome" },
                   })}
@@ -77,7 +95,7 @@ export const Players: React.FC<PlayersProps> = (props: PlayersProps) => {
             </div>
           ))}
           <div className="d-grid justify-content-md-end">
-            <Button className="me-md-2" onClick={() => append({ name: "" })}>
+            <Button className="me-md-2" onClick={addPlayer}>
               Aggiungi giocatore
             </Button>
           </div>

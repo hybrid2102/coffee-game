@@ -10,7 +10,7 @@ export const NextPlayer: React.FC<NextPlayerProps> = (
   const { nextPlayer } = props;
   return nextPlayer ? (
     <span>
-      Ora tocca a <strong>{nextPlayer.name}.</strong>.
+      Ora tocca a <strong>{nextPlayer.name}</strong>.
     </span>
   ) : (
     <span>Prova ancora.</span>

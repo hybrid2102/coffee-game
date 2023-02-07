@@ -9,7 +9,10 @@ interface SettingsState {
 
 // Define the initial state using that type
 const initialState: SettingsState = {
-  value: { defaultRange: { min: 1, max: 1000 } },
+  value: {
+    initialRange: { min: 1, max: 1000 },
+    initialNicksCount: 3,
+  },
 };
 
 export const settingsSlice = createSlice({

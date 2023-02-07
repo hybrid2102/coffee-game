@@ -14,7 +14,7 @@ export const SetSecret: React.FC<SetSecretProps> = (props: SetSecretProps) => {
     formState: { errors },
   } = props.formContext;
 
-  const { defaultRange } = useSelector(selectSettings);
+  const { initialRange: defaultRange } = useSelector(selectSettings);
 
   const [manualMode, setManualMode] = useState(false);
 

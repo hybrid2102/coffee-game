@@ -16,7 +16,7 @@ const initialState: GameState = {
   setup: {
     secret: 0,
     multiplayerMode: false,
-    players: [{ name: "Player 1" }],
+    players: [],
   },
 };
 

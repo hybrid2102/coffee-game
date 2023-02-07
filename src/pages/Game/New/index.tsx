@@ -11,7 +11,7 @@ import { startGame } from "../gameSlice";
 export const New: React.FC = () => {
   const dispatch = useAppDispatch();
   const {
-    defaultRange: { min, max },
+    initialRange: { min, max },
   } = useAppSelector(selectSettings);
 
   const formCtx = useForm<GameSetup>({

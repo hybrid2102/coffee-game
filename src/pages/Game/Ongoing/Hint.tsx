@@ -8,7 +8,7 @@ interface HintProps {
 
 export const Hint: React.FC<HintProps> = (props: HintProps) => {
   const { range } = props;
-  const { defaultRange } = useSelector(selectSettings);
+  const { initialRange: defaultRange } = useSelector(selectSettings);
 
   const leftPc = (range.min * 100) / defaultRange.max;
   const rightPc = 100 - (range.max * 100) / defaultRange.max;

@@ -1,5 +1,6 @@
 import { GameRange } from "./GameRange";
 
 export interface GameSettings {
-  defaultRange: GameRange;
+  initialRange: GameRange;
+  initialNicksCount: number;
 }
