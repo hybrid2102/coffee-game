@@ -8,19 +8,23 @@ export function useNickName(howMany: number) {
   return nickNames;
 }
 
-export function testAxios() {
+export async function testAxios() {
   const config = {
     headers: {
       "X-Api-Key": "05f39093c75f41a4b57654df668017ee",
     },
+    params: {
+      nameType: "firstname",
+      quantity: "1",
+    },
   };
-  const url = "https://randommer.io/api/Name?nameType=firstname&quantity=1";
+  const url = "https://randommer.io/api/Name";
 
-  axios
+  await axios
     .get(url, config)
     .then(function (response) {
       // handle success
-      console.log(response);
+      console.log(response.data);
     })
     .catch(function (error) {
       // handle error

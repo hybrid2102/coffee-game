@@ -38,7 +38,10 @@ export const New: React.FC = () => {
           <Button type="submit">Inizia la partita</Button>
         </div>
       </form>
-      <Button className="mt-3 btn-danger" onClick={() => testAxios()}>
+      <Button
+        className="mt-3 btn-danger"
+        onClick={async () => await testAxios()}
+      >
         Test Axios
       </Button>
     </>
