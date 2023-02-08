@@ -7,6 +7,7 @@ import { GameSetup } from "../../../interfaces/GameSetup";
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 import { selectSettings } from "../settingsSlice";
 import { startGame } from "../gameSlice";
+import { testAxios } from "../../../helpers/useNickname";
 
 export const New: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -37,6 +38,9 @@ export const New: React.FC = () => {
           <Button type="submit">Inizia la partita</Button>
         </div>
       </form>
+      <Button className="mt-3 btn-danger" onClick={() => testAxios()}>
+        Test Axios
+      </Button>
     </>
   );
 };
