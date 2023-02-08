@@ -3,10 +3,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import { useFieldArray, UseFormReturn } from "react-hook-form";
-import { useAppSelector } from "../../../app/hooks";
+import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 import { useNickName } from "../../../helpers/useNickname";
 import { GameSetup } from "../../../interfaces/GameSetup";
 import { selectSettings } from "../settingsSlice";
+import { fetchNicksAsync, selectNicks } from "./playersSlice";
 
 interface PlayersProps {
   formContext: UseFormReturn<GameSetup>;
@@ -28,7 +29,9 @@ export const Players: React.FC<PlayersProps> = (props: PlayersProps) => {
   const multiplayerMode = watch("multiplayerMode");
 
   const { initialNicksCount } = useAppSelector(selectSettings);
-  const [nicks, setNicknames] = useState(useNickName(initialNicksCount));
+  const dispatch = useAppDispatch();
+
+  const [nicks, setNicknames] = useState(useAppSelector(selectNicks));
 
   const addPlayer = () => {
     let nicksForAdd = nicks.slice();
@@ -46,6 +49,10 @@ export const Players: React.FC<PlayersProps> = (props: PlayersProps) => {
       setValue(`players.${i}.nick`, nicks[i]);
     }
   }, [setValue, nicks]);
+
+  useEffect(() => {
+    dispatch(fetchNicksAsync(initialNicksCount));
+  }, []);
 
   return (
     <>
