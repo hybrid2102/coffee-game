@@ -2,7 +2,7 @@ import { useState } from "react";
 import { UseFormReturn } from "react-hook-form";
 import { useSelector } from "react-redux";
 import { GameSetup } from "../../../interfaces/GameSetup";
-import { selectSettings } from "../settingsSlice";
+import { selectSettings } from "../../../app/slices/settingsSlice";
 
 interface SetSecretProps {
   formContext: UseFormReturn<GameSetup>;

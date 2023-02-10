@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useAppSelector } from "../app/hooks";
-import { selectSettings } from "./Game/settingsSlice";
+import { selectSettings } from "../app/slices/settingsSlice";
 
 export const Help = () => {
   const {

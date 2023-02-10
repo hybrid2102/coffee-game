@@ -7,9 +7,9 @@ import { Hint } from "./Hint";
 import { NextRound } from "./NextRound";
 import { RevealSecret } from "./RevealSecret";
 import { GameBet } from "../../../interfaces/GameBet";
-import { selectSettings } from "../settingsSlice";
+import { selectSettings } from "../../../app/slices/settingsSlice";
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
-import { endGame } from "../gameSlice";
+import { endGame } from "../../../app/slices/gameSlice";
 
 export const Ongoing: React.FC = () => {
   const { initialRange: defaultRange } = useAppSelector(selectSettings);

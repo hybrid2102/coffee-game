@@ -5,8 +5,8 @@ import { useRandom } from "../../../helpers/useRandom";
 import { Players } from "./Players";
 import { GameSetup } from "../../../interfaces/GameSetup";
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
-import { selectSettings } from "../settingsSlice";
-import { startGame } from "../gameSlice";
+import { selectSettings } from "../../../app/slices/settingsSlice";
+import { startGame } from "../../../app/slices/gameSlice";
 
 export const New: React.FC = () => {
   const dispatch = useAppDispatch();

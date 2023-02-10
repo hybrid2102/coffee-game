@@ -1,6 +1,5 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
-import { RootState } from "../../../app/store";
+import { createSlice } from "@reduxjs/toolkit";
+import { fetchNicksAsync } from "./fetchNicksThunk";
 
 // Define a type for the slice state
 interface PlayersState {
@@ -13,38 +12,6 @@ const initialState: PlayersState = {
   nicks: [],
   status: "idle",
 };
-
-export const fetchNicksAsync = createAsyncThunk(
-  "fetchNicks",
-  async (amount: number) => {
-    // TODO: spostare apikey
-    const config = {
-      headers: {
-        "X-Api-Key": "05f39093c75f41a4b57654df668017ee",
-      },
-      params: {
-        nameType: "firstname",
-        quantity: amount,
-      },
-    };
-    const url = "https://randommer.io/api/Name";
-
-    const { data } = await axios.get(url, config);
-    return data as string[];
-    /* .then(function (response) {
-      // handle success
-      console.log(response.data);
-      return response.data as string[];
-    }); */
-    /* .catch(function (error) {
-        // handle error
-        console.log(error);
-      })
-      .finally(function () {
-        // always executed
-      }); */
-  }
-);
 
 export const playersSlice = createSlice({
   name: "players",
