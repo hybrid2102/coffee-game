@@ -5,7 +5,6 @@ import { Button } from "react-bootstrap";
 import { useFieldArray, UseFormReturn } from "react-hook-form";
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 import { GameSetup } from "../../../interfaces/GameSetup";
-import { selectSettings } from "../../../app/slices/settingsSlice";
 import { fetchNicksAsync } from "../../../app/slices/fetchNicksThunk";
 
 interface PlayersProps {
