@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { RootState } from "../../../app/store";
 
@@ -60,7 +60,7 @@ export const playersSlice = createSlice({
       })
       .addCase(fetchNicksAsync.fulfilled, (state, action) => {
         state.status = "idle";
-        state.nicks = action.payload;
+        state.nicks = state.nicks.concat(action.payload);
       })
       .addCase(fetchNicksAsync.rejected, (state) => {
         state.status = "failed";

@@ -1,10 +1,9 @@
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Button } from "react-bootstrap";
 import { useFieldArray, UseFormReturn } from "react-hook-form";
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
-import { useNickName } from "../../../helpers/useNickname";
 import { GameSetup } from "../../../interfaces/GameSetup";
 import { selectSettings } from "../settingsSlice";
 import { fetchNicksAsync, selectNicks } from "./playersSlice";
@@ -31,16 +30,13 @@ export const Players: React.FC<PlayersProps> = (props: PlayersProps) => {
   const { initialNicksCount } = useAppSelector(selectSettings);
   const dispatch = useAppDispatch();
 
-  const [nicks, setNicknames] = useState(useAppSelector(selectNicks));
+  const nicks = useAppSelector(selectNicks);
 
   const addPlayer = () => {
-    let nicksForAdd = nicks.slice();
-    if (fields.length == nicksForAdd.length) {
-      const newNicks = useNickName(initialNicksCount);
-      nicksForAdd = nicks.concat(newNicks);
-      setNicknames(nicksForAdd);
+    if (fields.length == nicks.length) {
+      dispatch(fetchNicksAsync(initialNicksCount));
     }
-    const nextNick = nicksForAdd[fields.length];
+    const nextNick = nicks[fields.length];
     append({ name: "", nick: nextNick });
   };
 
