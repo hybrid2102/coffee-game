@@ -20,29 +20,30 @@ export const Help = () => {
           <em>(es: &quot;890&quot; )</em>
         </li>
         <li>
-          il primo giocatore scommette con un numero da {min} a {max}, estremi
-          esclusi <em>(es: &quot;300&quot;)</em>
+          il primo giocatore scommette con un numero in quell&apos;intervallo{" "}
+          <em>(es: &quot;300&quot;)</em>
         </li>
         <li>
           il banco controlla il numero segreto:
           <ul>
             <li>
-              se il giocatore ha indovinato, questi ha perso ed il gioco termina
-            </li>
-            <li>
-              altrimenti il banco rivela se il numero scommesso è minore o
-              maggiore del numero segreto
-              <em> (es: &quot;il numero segreto è maggiore di 300&quot;)</em>
+              se il giocatore ha indovinato, questi ha perso ed il gioco
+              termina;
             </li>
           </ul>
         </li>
         <li>
-          il banco aggiorna il limite minimo e massimo
+          altrimenti il banco rivela se il numero scommesso è minore o maggiore
+          del numero segreto
+          <em> (es: &quot;il numero segreto è maggiore di 300&quot;)</em>
+        </li>
+        <li>
+          il banco aggiorna quindi il limite minimo e massimo
           <em> (es: &quot;da 300 a 1000&quot;)</em>
         </li>
         <li>
-          adesso è il turno del secondo giocatore, che dovrò scommettere con un
-          nuovo numero, all&aposinterno dell&aposintervallo appena aggiornato
+          adesso è il turno del secondo giocatore, che dovrà scommettere con un
+          nuovo numero, all&apos;interno dell&apos;intervallo appena aggiornato
         </li>
         <li>
           il gioco termina quando un giocatore indovina il numero segreto,
