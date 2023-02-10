@@ -68,6 +68,6 @@ export const playersSlice = createSlice({
   },
 });
 
-export const selectNicks = (state: RootState) => state.players.nicks;
+//export const selectNicks = (state: RootState) => state.players.nicks;
 
 export default playersSlice.reducer;

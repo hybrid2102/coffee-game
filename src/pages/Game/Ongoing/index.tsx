@@ -9,12 +9,12 @@ import { RevealSecret } from "./RevealSecret";
 import { GameBet } from "../../../interfaces/GameBet";
 import { selectSettings } from "../settingsSlice";
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
-import { endGame, selectPlayers, selectSecret } from "../gameSlice";
+import { endGame } from "../gameSlice";
 
 export const Ongoing: React.FC = () => {
   const { initialRange: defaultRange } = useAppSelector(selectSettings);
-  const players = useAppSelector(selectPlayers);
-  const secret = useAppSelector(selectSecret);
+  const players = useAppSelector((state) => state.game.setup.players);
+  const secret = useAppSelector((state) => state.game.setup.secret);
   const dispatch = useAppDispatch();
 
   const [gameBet, setGameBet] = useState<GameBet>({

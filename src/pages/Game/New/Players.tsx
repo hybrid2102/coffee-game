@@ -6,7 +6,7 @@ import { useFieldArray, UseFormReturn } from "react-hook-form";
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 import { GameSetup } from "../../../interfaces/GameSetup";
 import { selectSettings } from "../settingsSlice";
-import { fetchNicksAsync, selectNicks } from "./playersSlice";
+import { fetchNicksAsync } from "./playersSlice";
 
 interface PlayersProps {
   formContext: UseFormReturn<GameSetup>;
@@ -30,7 +30,7 @@ export const Players: React.FC<PlayersProps> = (props: PlayersProps) => {
   const { initialNicksCount } = useAppSelector(selectSettings);
   const dispatch = useAppDispatch();
 
-  const nicks = useAppSelector(selectNicks);
+  const nicks = useAppSelector((store) => store.players.nicks);
 
   const addPlayer = () => {
     if (fields.length == nicks.length) {
@@ -39,7 +39,6 @@ export const Players: React.FC<PlayersProps> = (props: PlayersProps) => {
     const nextNick = nicks[fields.length];
     append({ name: "", nick: nextNick });
   };
-
   useEffect(() => {
     for (let i = 0; i < fields.length; i++) {
       setValue(`players.${i}.nick`, nicks[i]);

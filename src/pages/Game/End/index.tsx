@@ -1,10 +1,10 @@
 import Button from "react-bootstrap/Button";
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
-import { restartGame, selectLoser, selectSecret } from "../gameSlice";
+import { restartGame } from "../gameSlice";
 
 export const End: React.FC = () => {
-  const secret = useAppSelector(selectSecret);
-  const loser = useAppSelector(selectLoser);
+  const secret = useAppSelector((state) => state.game.setup.secret);
+  const loser = useAppSelector((state) => state.game.loser);
   const dispatch = useAppDispatch();
   const restart = () => dispatch(restartGame());
   return (

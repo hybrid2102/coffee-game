@@ -1,9 +1,7 @@
 import { New } from "./New";
 import { Ongoing } from "./Ongoing";
 import { End } from "./End";
-import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import { restartGame, selectStatus } from "./gameSlice";
-import { useEffect } from "react";
+import { useAppSelector } from "../../app/hooks";
 
 export const Game = () => {
   const gameStatusComponents = {
@@ -12,7 +10,7 @@ export const Game = () => {
     end: <End />,
   };
 
-  const gameStatus = useAppSelector(selectStatus);
+  const gameStatus = useAppSelector((state) => state.game.status);
 
   // const dispatch = useAppDispatch();
   // useEffect(() => {

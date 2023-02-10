@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { RootState } from "../../app/store";
 import { GameSetup } from "../../interfaces/GameSetup";
 import { Player } from "../../interfaces/Player";
 
@@ -45,9 +44,9 @@ export const gameSlice = createSlice({
 
 export const { startGame, endGame, restartGame } = gameSlice.actions;
 
-export const selectStatus = (state: RootState) => state.game.status;
+/* export const selectStatus = (state: RootState) => state.game.status;
 export const selectSecret = (state: RootState) => state.game.setup.secret;
 export const selectPlayers = (state: RootState) => state.game.setup.players;
-export const selectLoser = (state: RootState) => state.game.loser;
+export const selectLoser = (state: RootState) => state.game.loser; */
 
 export default gameSlice.reducer;
