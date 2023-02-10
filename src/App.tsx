@@ -11,6 +11,7 @@ import { PageLayout } from "./components/PageLayout";
 
 import { Provider } from "react-redux";
 import { store } from "./app/store";
+import { Settings } from "./pages/Settings";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <PageLayout>
           <Switch>
             <Route path="/" exact component={Game} />
+            <Route path="/settings" component={Settings} />
             <Route path="/help" component={Help} />
             <Route path="/about" component={About} />
             <Route path="*" component={NotFound} />

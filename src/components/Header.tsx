@@ -1,12 +1,12 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCoffee,
+  faGear,
   faInfo,
   faPlay,
   faQuestion,
-  IconDefinition,
 } from "@fortawesome/free-solid-svg-icons";
-import { NavLink } from "react-router-dom";
+import { HeaderItemLink } from "./HeaderItemLink";
 
 export const Header = () => {
   return (
@@ -24,39 +24,17 @@ export const Header = () => {
 
           <ul className="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
             <HeaderItemLink to="/" key={0} icon={faPlay} text="play" />
-            <HeaderItemLink to="/help" key={1} icon={faQuestion} text="help" />
-            <HeaderItemLink to="/about" key={2} icon={faInfo} text="about" />
+            <HeaderItemLink
+              to="/settings"
+              key={1}
+              icon={faGear}
+              text="settings"
+            />
+            <HeaderItemLink to="/help" key={2} icon={faQuestion} text="help" />
+            <HeaderItemLink to="/about" key={3} icon={faInfo} text="about" />
           </ul>
         </header>
       </div>
     </div>
-  );
-};
-
-interface HeaderItemLinkProps {
-  to: string;
-  icon: IconDefinition;
-  text: string;
-}
-const HeaderItemLink = (props: HeaderItemLinkProps) => {
-  const { to, icon, text } = props;
-
-  return (
-    <li>
-      <NavLink
-        exact={true}
-        to={to}
-        className={(isActive) =>
-          isActive ? "nav-link text-white" : "nav-link text-secondary"
-        }
-      >
-        <FontAwesomeIcon
-          className="bi d-block mx-auto mb-1"
-          icon={icon}
-          size="xl"
-        />
-        {text}
-      </NavLink>
-    </li>
   );
 };
