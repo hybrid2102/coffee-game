@@ -5,14 +5,13 @@ import { useRandom } from "../../../helpers/useRandom";
 import { Players } from "./Players";
 import { GameSetup } from "../../../interfaces/GameSetup";
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
-import { selectSettings } from "../../../app/slices/settingsSlice";
 import { startGame } from "../../../app/slices/gameSlice";
 
 export const New: React.FC = () => {
   const dispatch = useAppDispatch();
   const {
     initialRange: { min, max },
-  } = useAppSelector(selectSettings);
+  } = useAppSelector((state) => state.settings.value);
 
   const formCtx = useForm<GameSetup>({
     defaultValues: {

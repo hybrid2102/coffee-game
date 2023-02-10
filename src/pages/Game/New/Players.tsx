@@ -27,10 +27,10 @@ export const Players: React.FC<PlayersProps> = (props: PlayersProps) => {
 
   const multiplayerMode = watch("multiplayerMode");
 
-  const { initialNicksCount } = useAppSelector(selectSettings);
+  const { initialNicksCount } = useAppSelector((state) => state.settings.value);
   const dispatch = useAppDispatch();
 
-  const nicks = useAppSelector((store) => store.players.nicks);
+  const nicks = useAppSelector((state) => state.players.nicks);
 
   const addPlayer = () => {
     if (fields.length == nicks.length) {

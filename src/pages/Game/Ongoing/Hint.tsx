@@ -1,6 +1,5 @@
-import { useSelector } from "react-redux";
+import { useAppSelector } from "../../../app/hooks";
 import { GameRange } from "../../../interfaces/GameRange";
-import { selectSettings } from "../../../app/slices/settingsSlice";
 import "./hint.css";
 interface HintProps {
   range: GameRange;
@@ -8,7 +7,9 @@ interface HintProps {
 
 export const Hint: React.FC<HintProps> = (props: HintProps) => {
   const { range } = props;
-  const { initialRange: defaultRange } = useSelector(selectSettings);
+  const { initialRange: defaultRange } = useAppSelector(
+    (state) => state.settings.value
+  );
 
   const leftPc = (range.min * 100) / defaultRange.max;
   const rightPc = 100 - (range.max * 100) / defaultRange.max;
